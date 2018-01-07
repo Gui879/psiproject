@@ -1,0 +1,143 @@
+<link href="/client/Users/settings_css.css" type="text/css" rel="stylesheet">
+<!-- <form id="uploadPhoto" name="upload_form">
+    <div id="imgClass">
+        <img id="foto" style="width:100px;" alt="Click me to change the photo!" ngf-thumbnail="file || '/client/profilepics/default.png'"/>
+        <div id="overlay">Edit Me!</div>
+        <img id="fake" src="/client/profilepics/default.png">
+    </div>
+    <input
+            type="file"
+            ngf-select
+            ng-model="file"
+            name="file"
+            ngf-pattern="'image/*'"
+            accept="image/*"
+            ngf-max-size="20MB"
+            id="uploadFoto"
+    />
+
+    <div id="right">
+        <span>First Name</span>
+        <input required ng-model="user.firstname" name="firstName" type="text" selected>
+        <span>Last Name</span>
+        <input required ng-model="user.lastname" name="lastName" type="text">
+        <span>Phone Number</span>
+        <input required  ng-model="user.phoneNumber" name="phoneNumber" type="number">
+        <span>Email</span>
+        <input required ng-model="user.email" name="email" type="email">
+        <div id="buttons">
+
+            <button type="submit" ng-click="createUser(user)">Confirm</button>
+            <button ng-click="popuphide()">Cancel</button>
+            {{result}}
+        </div>
+    </div>
+</form>
+-->
+ <div id="topbar">
+
+
+ </div>
+ <div id="menu">
+     <div id="box">
+         <div id="personalInfo">
+            <div id="head">Personal Information</div>
+             <div id="desc">Setup your personal information such as phone number or email.</div>
+             <div id="photo">
+             <div id="imgClass">
+                 <img id="foto" style="width:250px;" alt="Click me to change the photo!" ngf-thumbnail="file || source"/>
+                 <div id="overlay">Edit Me!</div>
+             </div>
+             <input
+                     type="file"
+                     ngf-select
+                     ng-model="file"
+                     name="file"
+                     ngf-pattern="'image/*'"
+                     accept="image/*"
+                     ngf-max-size="20MB"
+                     id="uploadFoto"
+             />
+         </div>
+             <div id="form">
+                <div id="left">
+                    <span>First Name</span>
+                    <span>Last Name</span>
+                    <span>Email</span>
+                    <span>Phone Number</span>
+                 </div>
+                 <div id="right">
+                    <input  name="firstName" type="text" value="{{utilizador[0].primeironome}}" disabled>
+                     <input  name="lastName" type="text" value="{{utilizador[0].ultimonome}}" disabled>
+                     <input  name="email" type="email" ng-model="email"  placeholder="{{utilizador[0].email}}">
+                     <input  name="phoneNumber" ng-model="phoneNumber"  type="number" placeholder="{{utilizador[0].telefone}}">
+                 </div>
+             </div>
+             <button id="passButton"  ng-click="toggle=!toggle">Change Password</button>
+             <button type="submit" ng-click="submit()">Submit</button>
+         </div>
+         <div id="personalInfo" ng-hide="!toggle">
+            <div id="head">Password</div>
+             <div id="desc">Setup your password. Take care with security!</div>
+             <div id="pass">
+                <div id="left">
+                    <span>New Password</span>
+                    <span>Confirm New Password</span>
+                    <span>Current Password</span>
+                 </div>
+                 <div id="right">
+                    <input id="pass1" type="password" ng-model="pass1" type="text">
+                     <input id="pass2" type="password" ng-model="pass2" type="text">
+                     <input id="pass3" type="password" ng-model="pass3" type="text">
+                 </div>
+             </div>
+             <button type="submit" ng-click="popupShow('passpopup')">Submit</button>
+         </div>
+     </div>
+     
+     
+ </div>
+<div id="menuDark">
+    <div class="confirm" id="passpopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to change your passoword?</label>
+        <div id="actionButtons">           
+            <button ng-click="passwordchange(pass1,pass2,pass3)">Confirm</button>
+            <button ng-click="popuphide()">Cancel</button>
+        </div>
+    </div>
+    
+    
+    <div class="sucess" id="passsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The password was sucessfully changed!</span>
+        </div>
+    </div>
+    
+    <div class="sucess" id="editsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>Your personal info was sucessfully updated!</span>
+        </div>
+    </div>
+    
+    
+    <div class="failure">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-error"></i>
+            <span>Ups!</span>
+            <span>There are some technical problem!</span>
+        </div>
+    </div>
+    
+
+    
+    
+</div>
+

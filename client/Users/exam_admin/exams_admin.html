@@ -1,0 +1,65 @@
+<link href="/client/Users/teacher/calendar.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/exam_admin/exams_admin_css.css" type="text/css" rel="stylesheet">
+
+
+
+<div id="topBar">
+    
+
+</div>
+<div id="menu">
+    <div id="contentBox">
+        <div id="calendar">
+            <div id="header">
+                <span ng-click="prevMonth()"><i class="icon-angle-left"></i></span>
+                <span>{{monthNames[month]}} {{year}}</span>
+                <span ng-click="nextMonth()"><i class="icon-angle-right"></i></span>
+            </div>
+            <div id="calendarContent">
+                <div class="row">
+                    <div class="day">Sun</div>
+                    <div class="day">Mon</div>
+                    <div class="day">Tue</div>
+                    <div class="day">Wed</div>
+                    <div class="day">Thu</div>
+                    <div class="day">Fri</div>
+                    <div class="day">Sat</div>
+                </div>
+                <div class="row" ng-repeat="row in calendarDays">
+                    <div class="day" ng-click="setFilter(day,$parent.$index,$index); " ng-class="{'currentday':day.currentDay, 'notMonthDays':!day.monthDay,'haveEvents':day.events.length!=0, 'mouseOver':hover||day.selected}" ng-repeat="day in row track by $index" ng-mouseenter="hover = true"
+    ng-mouseleave="hover = false">
+                        <span>{{day.day}}
+                            <div ng-class="{'pendent':day.hasPendentEvents}"><i class="icon-error"></i></div>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="list">
+            <div class="event" ng-class="{'pendente':event.ESTADO=='PENDENTE'}" ng-repeat="event in events">
+                <div id="cross" ng-class="{'hide':event.ESTADO=='PENDENTE'}" ng-click="popuphide();deleteExam(event);"><i class="icon-cross"></i></div>
+                <label>{{event.NOME}}</label>
+                <label>Exam</label>
+                <label>Room</label><label> {{event.NOMESALA}}</label>
+                <label>Hour</label><label> {{event.HORAINICIO}} - {{event.HORAFIM}}</label>
+                <button class="approve" ng-click="approveExam(event);" ng-class="{'hide':event.ESTADO!='PENDENTE'}">Approve</button>
+                <button class="cancel" ng-click="deleteExam(event);" ng-class="{'hide':event.ESTADO!='PENDENTE'}">Cancel</button>
+            </div>
+            <div id="warning" ng-hide="events.length!=0">
+                <i class="icon-error"></i>
+                <span>There are no exams</span>
+                <span>scheduled to this day!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="menuDark">
+    <div id="deletePopup">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        <div id="popupcontent">
+            <img src="/client/shared/images/warning.png">
+            <p>It's impossible to delete this event! Probably there are grades associate to this exam :&#40;</p>
+        </div>
+    </div>
+</div>

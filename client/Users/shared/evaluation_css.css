@@ -1,0 +1,90 @@
+
+
+/*
+table {
+    table-layout: fixed;
+    display: table;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 50px;
+    height: -webkit-calc(100% - 200px);
+    height: calc(100% - 100px);
+}
+.students{
+    color: black;
+}		
+.fixed_headers td:nth-child(1),
+.fixed_headers th:nth-child(1) {
+    min-width: 200px;
+    padding-left: 10px;
+}
+.fixed_headers td:nth-child(2),
+.fixed_headers th:nth-child(2) {
+    min-width: 200px;
+}
+.fixed_headers td:nth-child(3),
+.fixed_headers th:nth-child(3) {
+    min-width: 200px;
+}
+.fixed_headers td:nth-child(4),
+.fixed_headers th:nth-child(4) {
+    min-width: 100px;
+    padding-right: 10px;
+}
+.fixed_headers thead tr {
+    display: block;
+    position: relative;
+    border-bottom: 10px solid #5C666C;
+}
+.fixed_headers tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    max-height: -webkit-calc(100%);
+    max-height: calc(100% - 50px);
+}
+
+.tabrow{
+    background-color: darkgrey;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+tbody,thead{
+    display: block;
+}
+table.scroll {
+
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+table.scroll tbody,
+table.scroll thead { display: block; }
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+}
+table.scroll tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+tbody tr{
+    margin-top: 5px;
+}
+
+thead{
+    background-color: transparent;
+    font-size: 18px;
+}
+tr{
+    line-height: 40px;
+}
+th, td {
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: rgba(92,102,108,0.3);
+}

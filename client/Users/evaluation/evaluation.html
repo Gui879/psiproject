@@ -1,0 +1,149 @@
+<link href="/client/Users/evaluation/evaluation_css.css" type="text/css" rel="stylesheet">
+<div id="topBar">
+    
+</div>
+<div id="menu" >
+    <div id="slide1">
+        <div id="searchBar">
+            <div id="icon"><span><i class="icon-search"></i></span></div>
+            <input type="text" ng-model="searchFilter">
+        </div>
+
+        <div id="courses">
+            <div class="course" ng-click="nextSlide('slide1','slide3'); selectCourse($index);getExamsByCourse()" ng-repeat="course in courses=(coursesList | filter:searchFilter)">
+                <label>{{course.NOME}}</label>
+                <label>{{teacherName[0].nome}}</label>
+                <label>Teacher</label>
+            </div>
+        </div>
+        <div id="warning" ng-hide="coursesList.length!=0">
+            <i class="icon-error"></i>
+            <span>There are no courses</span>
+            <span>assigned to you!</span>
+        </div>
+        <div id="warning" ng-hide="courses.length!=0 || coursesList.length==0">
+            <i class="icon-error"></i>
+            <span>No courses found!</span>
+        </div>
+    </div>
+    <div id="slide2">
+        <div id="header">
+            <div id="goBack" ng-click="nextSlide('slide2','slide3')">
+                <i class="icon-angle-left"></i>
+                <span>Exams</span>
+            </div>
+        </div>
+        <form>
+        <div id="studentsList">
+            <div id="header">
+                <span>Number</span>
+                <span>Name</span>
+                <span>Grade</span>
+            </div>
+            <div id="rows">
+                <div class="userRow" ng-repeat="student in studentList">
+                    <span>{{student.NUMINST}}</span>
+                    <span>{{student.PRIMEIRONOME}} {{student.ULTIMONOME}}</span>
+                    <span><input ng-class="{'wrong': grades[$index].wrong == true}" ng-model="grades[$index].NOTA" value=0 type="number"></span>
+                </div>            
+            </div>
+            <input type="submit" ng-click="popupShow('confirmUpload')" value="Save">
+            <input type="submit" ngf-select ng-model="excelfile" ngf-multiple="false" value="Import from Excel" ng-change="excelsubmit()">
+            <span id="msg">(The file must have two fields called 'num' and 'nota'!)</span>
+        </div>
+            </form>
+    </div>
+    <div id="slide3">
+        <div id="header">
+            <div id="goBack" ng-click="nextSlide('slide3','slide1')">
+                <i class="icon-angle-left"></i>
+                <span>Courses</span>
+            </div>
+        </div>
+        <div id="courses">
+            <div class="course" ng-repeat="exam in exams | orderBy: '-DATA'" ng-click="selectExam(exam);editGrades()">
+                <label>{{exam.NOME}}</label>
+                <label>{{exam.ESTADO}}</label>
+                <label>{{exam.DIA}}-{{exam.MES}}-{{exam.ANO}}</label>
+            </div>
+            <div id="warning" ng-hide="exams.length!=0">
+            <i class="icon-error"></i>
+            <span>There are no exams scheduled!</span>
+        </div>
+        </div>
+    </div>
+    <div id="slide4">
+        <div id="header">
+            <div id="goBack" ng-click="nextSlide('slide4','slide3');getExamsByCourse();">
+                <i class="icon-angle-left"></i>
+                <span>Exams</span>
+            </div>
+        </div>
+        <div id="studentsList">
+            <div id="header">
+                <span>Number</span>
+                <span>Name</span>
+                <span>Grade</span>
+            </div>
+            <div id="rows">
+                <div class="userRow" ng-repeat="student in studentList">
+                    <span>{{student.NUMINST}}</span>
+                    <span>{{student.PRIMEIRONOME}} {{student.ULTIMONOME}}</span>
+                    <span>{{grades[$index].NOTA}}</span>
+                </div>  
+            </div>
+            <div id="footer">
+                <label>Average Grade: {{avgGrade}}</label>
+                <label>Approval Rate: {{approveRating}}%</label>
+                <label>Maximum Grade: {{maxGrade}}</label>
+                <label>Minimum Grade: {{minGrade}}</label>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div id="menuDark">
+    <div id="revisionDate">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        <div id="popupcontent">
+            <p>It's time to define the revision date! You can edit the grades until reach the revision date and two more business days! Please, pick a date!</p>
+            <input ng-model="date" type="date">
+            
+            <button ng-click="insertRevisionDate(date)">Confirm</button>
+        </div>
+    </div>
+    <div class="sucess" id="remider">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <span>The grades can be changed unil {{selectedExam.DIAREVISAO}}-{{selectedExam.MESREVISAO}}-{{selectedExam.ANOREVISAO}} plus two more business days!</span>
+        </div>
+    </div>
+    
+    <div class="sucess" id="editsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully updated!</span>
+        </div>
+    </div>
+    
+    <div class="failure" id="noExam">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-error"></i>
+            <span>Ups!</span>
+            <span>The selected exam has not happened yet!</span>
+        </div>
+    </div>
+    
+    <div class="confirm" id="confirmUpload">
+        <div id="topbar"></div>
+        <label>Are you sure you want to upload the grades?</label>
+        <div id="actionButtons">           
+            <button ng-click="insertGrades()">Confirm</button>
+            <button ng-click="popuphide();">Cancel</button>
+        </div>
+    </div>
+    
+</div>

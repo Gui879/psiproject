@@ -1,0 +1,50 @@
+<link href="/client/Users/students/createStudent_css.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/accounts/users_css.css" type="text/css" rel="stylesheet">
+<div id="topBar">
+    <a ui-sref="user.users">
+        <div class="tab">
+            <span>Users' List</span>
+        </div>
+    </a>
+    <a ui-sref="user.createUser">
+        <div class="tab">
+            <span>New User</span>
+        </div>
+    </a>
+</div>
+<div id="menu" >
+    <form >
+        <div id="userType">
+            <label ng-click="toogle=false">
+               <input required ng-model="user.type" type="radio" name="role" value="a">
+               <i>Administrator</i>
+            </label>
+            <label required ng-click="toogle=true">
+               <input ng-model="user.type" type="radio" name="role" value="p">
+               <i>Teacher</i>
+            </label>
+        </div>
+        <div id="left">
+            <img src="/client/shared/images/profile_empty_picture.png">
+        </div>
+        <div id="right">
+            <div id="left">
+                <span>First Name</span>
+                <input required ng-model="user.firstname" name="firstName" type="text" selected>
+                <span>Last Name</span>
+                <input required ng-model="user.lastname" name="lastName" type="text">
+            </div>
+            <div id="right">
+                <span>Phone Number</span>
+                <input required name="phoneNumber" type="number">
+                <span>Email</span>
+                <input required name="email" type="email">
+            </div>
+        </div>
+        <div id="footer2">{{result}}
+            <button ng-click="createUser(user)" type="submit">Confirm</button>
+            <button type="submit">Cancel</button>
+        </div>
+        
+    </form>
+</div>

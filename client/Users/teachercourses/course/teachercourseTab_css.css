@@ -1,0 +1,254 @@
+#menu{
+    display: block;
+    overflow: auto;
+}
+
+.tab{
+    width:auto;
+    padding:1px;
+    cursor:pointer;
+    max-width:450px;
+    
+}
+.courseTab>#header{
+    width: 100%;
+    height: 130px;
+    display: inline-block;
+    border-bottom: 10px solid rgba(92,102,108,1);
+}
+
+.courseTab #header label{
+    position: relative;
+    float: left;
+    font-weight: bold;
+    margin-left: 50px;
+    display: inline-block;
+    width: calc(100% - 200px);
+    text-align: left;
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.courseTab #buttons{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.courseTab #button{
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding: 6px;
+    font-size: 15px;
+    border-radius: 20px;
+    text-align: left;
+}
+.courseTab #button #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+.courseTab #button #icon{
+    font-size: 10px;
+}
+#button label{
+    font-size: 15px !important;
+    line-height: 25px;
+    top: -1;
+    padding-right: 5px;
+    margin: 0 !important;
+    width: auto !important;
+    float: none !important;
+    font-weight: normal !important;
+}
+.courseContent{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    clear: both;
+    height: calc(100% - 265px);
+}
+#students{
+    width: 80%;
+    margin: 0 auto;
+    
+    
+}
+#students #header{
+    border-bottom: 10px solid #5C666C;
+    display: block;
+    width: 100%;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    min-height: 28px;
+    position: static;
+}
+#students #rows{
+    max-height: calc(100% - 98px);
+    overflow-y: auto;
+}
+#students #header span{
+    color: black;
+    display: block;
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+#students #header span:nth-child(1){
+    width: 10%;
+    min-width: 100px;
+}
+#students #header span:nth-child(2){
+    width: 50%;
+}
+#students #header span:nth-child(3){
+    max-width: calc(40% - 100px);
+}
+
+#students #studentRow span{
+    color: black;
+    display: block;
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+#students #studentRow span:nth-child(1){
+    width: 10%;
+    min-width: 100px;
+}
+#students #studentRow span:nth-child(2){
+    width: 50%;
+}
+#students #studentRow span:nth-child(3){
+    max-width: calc(40% - 100px);
+}
+#rows .studentRow{
+    padding-left: 10px;
+    overflow: hidden;
+    line-height: 40px;
+    width: calc(100% - 10px);
+}
+
+#rows .studentRow:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+#searchBar{
+    margin-bottom: 10px;
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 20px;
+}
+#searchBar #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+#searchBar input{
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 150px;
+    font-family: 'Quicksand';
+}
+input:focus {
+    outline-width: 0;
+}
+#head{
+    width: 100%;
+    text-align: right;
+    margin: 0 auto;
+    height: 50px;
+}
+#schedule{
+    width: 80%;
+    margin: 0 auto;
+    max-height: 100%;
+}
+#schedule #scheduleHead{
+    width: 100%;
+    clear: both;
+    height: 30px;
+    border-bottom: 10px solid rgba(92,102,108,1);
+    font-weight: bold;
+}
+#schedule #scheduleHead>.column{
+    width: 16.6%;
+    height: 100%;
+    position: relative;
+    float: left;
+    display: inline-block;
+}
+.column label{
+    text-align: center;
+}
+#schedule #rows{
+    max-height: calc(100% - 98px);
+    overflow-y: auto;
+}
+#schedule #rows>.row{
+    clear: both;
+    height: 50px;
+}
+#schedule #rows .row:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+.row>.column{
+    width: 16.666%;
+    height: 100%;
+    position: relative;
+    float: left;
+    display: inline-block;
+}
+#navigationBar{
+    width: 100%;
+    margin-top: 50px;
+    clear: both;
+    font-size: 30px;
+}
+#navigationBar .icon-angle-left{
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+#navigationBar .icon-angle-right{
+    display: inline-block;
+    position: relative;
+    float: right;
+}
+#rows>#warning{
+    display: inline-block;
+    position: relative;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    animation: appear 0.5s 1;
+    margin-top:120px;
+}
+#rows>#warning>i{
+    font-size: 110px;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    color: rgba(92,102,108,1);
+    animation: alert 5s infinite;
+}
+#rows>#warning>span{
+    font-size: 20px;
+    color: rgba(92,102,108,1);
+    display: block;
+}

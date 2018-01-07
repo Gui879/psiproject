@@ -1,0 +1,212 @@
+<link href="/client/Users/students/student_css.css" type="text/css" rel="stylesheet">
+<div id="topBar">
+    <a ui-sref="user.students">
+        <div class="tab">
+            <span>Student's List</span>
+        </div>
+    </a>
+    <a ui-sref="user.createStudent">
+        <div class="tab">
+            <span>New Student</span>
+        </div>
+    </a>
+</div>
+<div style="display:'block'" id="menu" >
+    
+    <div id="studentList"> 
+        <div id="head">
+            <div id="searchBar">
+                <div id="icon"><span><i class="icon-search"></i></span></div>
+                <input type="text" ng-model="searchFilter">
+            </div>
+        </div>
+        <div id="header">
+            <span>Number<i class="icon-sort" ng-click="sortList('NUMBER')"></i></span>
+            <span>Name<i class="icon-sort" ng-click="sortList('NAME')"></i></span>
+            <span>Program Enrolled<i class="icon-sort" ng-click="sortList('PROGRAM')"></i></span>
+            <span>Status<i class="icon-sort" ng-click="sortList('STATUS')"></i></span>
+            <span>Registration Date<i class="icon-sort" ng-click="sortList('DATE')"></i></span>
+        </div>
+        <div id="rows">
+            <div class="studentRow" ng-repeat="student in list=(studentList | filter:searchFilter) | orderBy: sortFilter" ng-click="popupshow(student);getEnrolledCourses(student.NUMBER) ">
+                <span>{{student.NUMBER}}</span>
+                <span>{{student.NAME}}</span>
+                <span>{{student.PROGRAM}}</span>
+                <span>{{student.STATUS}}</span>
+                <span>{{student.DATE}}</span>
+            </div>
+            <div id="warning" ng-hide="list.length!=0">
+                <i class="icon-error"></i>
+                <span>No students found!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="menuDark">
+   <div id="studentPopup">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+    <div id="header">
+        <img src="{{selectedStudent.img}}">
+        <label ng-show="!editmode"id="studentName">{{selectedStudent.NAME}}</label>
+        <div ng-show="editmode"  class="studentName">
+            <input type="text" ng-model="userChange.primeironome" />
+            <input type="text" ng-model="userChange.ultimonome" />
+        </div>
+        
+        <label id="studentNumber">{{selectedStudent.NUMBER}}</label>
+        <label ng-show="!editmode" id="studentProgram">{{selectedStudent.PROGRAM}}</label>
+        <select ng-show="editmode" ng-model="courseid" ng-change="nameProgram=program.NOME" ng-options="program.ID_CURSO as program.NOME for program in listPrograms">
+        </select>
+        <div id="buttons">
+            <div id="button" ng-click="changeButton()"style="cursor:pointer">
+                <div id="icon"><span><i class="icon-edit-modify-streamline"></i></span></div>
+                <label style="cursor:pointer">{{editdone}}</label>
+            </div>
+            <div id="button" ng-click="deletePopup()" style="cursor:pointer">
+                <div id="icon"><span><i class="icon-delete-garbage-streamline"></i></span></div>
+                <label style="cursor:pointer">Delete</label>
+            </div>
+        </div>
+    </div>
+
+        <div id="popupcontent">
+            <div id="slideSelector">
+                <i class="icon-angle-left" ng-click="plusDivs(-1)"></i>
+                <span>Enrolled Courses</span>
+                <i class="icon-angle-right" ng-click="plusDivs(1)"></i>
+            </div>
+            <div class="slide">
+                <div id="lateralInfo">
+                    <div id="contacts">
+                        <div id="head">Contacts</div>
+                        <span>Email</span>
+                        <span ng-hide="editmode">{{selectedStudent.EMAIL}}</span>
+                        <span ng-hide="editmode || selectedStudent.EMAIL!=null" >(Empty)</span>
+                        <input ng-show="editmode" type="text" ng-model="userChange.email" />
+                        <span>Phone Number</span>
+                        <span ng-hide="editmode">{{selectedStudent.NUM_TELEFONE}}</span>
+                        <span ng-hide="editmode || selectedStudent.NUM_TELEFONE!=null" >(Empty)</span>
+                        <input ng-show="editmode" type="text" ng-model="userChange.numtelefone" />
+                    </div>
+                    <div id="credits">
+                        <div id="head">Credits</div>
+                        <span>Actual Average Grade</span>
+                        <span>{{avgGrade}}</span>
+                        <span>Approved Credits</span>
+                        <span>{{approvedCredits}} ETC</span>
+                        <span>Disapproved Credits</span>
+                        <span>{{disapprovedCredits}} ETC</span>
+                    </div>
+                </div>
+            </div>
+         <div class="slide">
+                <div id="approvedCourses">
+                    <div id="header">
+                        <label>Course Name</label>
+                        <label>Enrollment Date</label>
+                        <label>Final Grade</label>
+                    </div>
+                    <div id="rows">
+                        <div ng-click="toggleExams(course)" ng-repeat="course in enrolledCourses | filter:searchFilter">
+                            <div class="row course">
+                                <span><i ng-hide="course.opened" class="icon-caret-right"></i><i ng-hide="!course.opened" class="icon-caret-down"></i> {{course.NOME}}</span>
+                                <span>{{course.DATA}}</span>
+                                <span>{{course.NOTA}} </span>
+                            </div>
+                            <div ng-hide="!course.opened" class="row exam" ng-repeat=" exam in course.exams track by $index">
+                                <span>Exam {{$index+1}}</span>
+                                <span></span>
+                                <span>{{exam.NOTA}} </span>
+                            </div>
+                            <div ng-hide="!(course.opened && course.exams.length==0)" class="row exam">
+                                <span>No exams available!</span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div id="enrolledCourses">
+                    <div id="head">Study Plan</div>
+                    <div id="semesters">
+                                <div id="semester" ng-repeat="list in models.lists | limitTo:(models.lists.length-1) track by $index">
+                                <label id="quauq" ng-hide="$index%2!=0">Year {{Math.round(($index+1)/2)}} - Fall</label>
+                                <label id="quauq" ng-hide="$index%2==0">Year {{Math.round(($index+1)/2)}} - Spring</label>
+                                <ul dnd-drop="callback({targetList: list, targetIndex: index, listname: 'qua'})" dnd-list="list">
+                                    <li ng-repeat="item in list"
+                                        dnd-callback="onDrop(list, $index, targetList, targetIndex,listname)"
+                                        dnd-draggable="item"
+                                        dnd-effect-allowed="move"
+                                        dnd-selected="models.selected = item"
+                                        ng-class="{'selected': models.selected === item, 'fundamental': list[$index].fundamental}"
+                                        >
+                                        {{item.label}}<span ng-hide="!item.fundamental">&nbsp (F)</span> 
+
+                                    </li>
+                                    <li class="credits" ng-hide="list.length==0 || program.vary==0 || program.vary==undefined"><label><b>Total of Credits:</b>&nbsp{{countCredits[$index]}}&nbsp ECT</label></li>
+                                    <label ng-hide="list.length!=0">No courses here!</label>
+                                </ul>
+
+                            </div>
+                            <div id="warning" ng-hide="models.lists.length>1">
+                                <i class="icon-error"></i>
+                                <span>There is no course plan defined!</span>
+                            </div>
+
+                            </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+<div id="menuDark3">
+    <div class="confirm" id="deletepopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to delete {{selectedStudent.NAME}}?</label>
+        <div id="actionButtons">           
+            <button ng-click="deleteStudent()">Confirm</button>
+            <button ng-click="popuphide3()">Cancel</button>
+        </div>
+    </div>
+    <div class="confirm" id="editpopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to update {{selectedStudent.NAME}}?</label>
+        <div id="actionButtons">           
+            <button ng-click="applyChanges()">Confirm</button>
+            <button ng-click="popuphide3()">Cancel</button>
+        </div>
+    </div>
+    <div class="sucess" id="deletesucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully deleted!</span>
+        </div>
+    </div>
+    
+    <div class="sucess" id="editsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully updated!</span>
+        </div>
+    </div>
+    
+    <div class="failure">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-error"></i>
+            <span>Ups!</span>
+            <span>There are some technical problem!</span>
+        </div>
+    </div>
+</div>

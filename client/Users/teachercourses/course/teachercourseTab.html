@@ -1,0 +1,80 @@
+<link href="/client/Users/teachercourses/course/teachercourseTab_css.css" type="text/css" rel="stylesheet">
+
+<div id="menu" class="courseTab">
+    <div id="header">
+        <label id="courseName">{{courseName}}</label>
+
+    </div>
+    <div id="navigationBar">
+        <i class="icon-angle-left" style="cursor:pointer" ng-click="slideChange()"></i>
+        <span>{{slidename}}</span>
+        <i class="icon-angle-right"style="cursor:pointer"  ng-click="slideChange()"></i>
+    </div>
+    <div class="courseContent" ng-show="details">
+        <div id="students">
+            <div id="head">
+                
+                <div id="searchBar">
+                    <div id="icon"><span><i class="icon-search"></i></span></div>
+                    <input type="text" ng-model="searchFilter">
+                </div>
+            </div>
+            <div id="header">
+                <span>Number</span>
+                <span>Name</span>
+                <span>Status</span>
+            </div>
+            <div id="rows">
+                <div class="studentRow" ng-repeat="student in studentsList | filter:searchFilter" >
+                    <span>{{student.NUMINST}}</span>
+                    <span>{{student.NAME}}</span>
+                    <span>Estado</span>
+                </div>
+                <div id="warning" ng-hide="studentsList.length!=0">
+                    <i class="icon-error"></i>
+                    <span>There are no students</span>
+                    <span>enrolled on this course!</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="courseContent" ng-hide="details">
+        <div id="schedule">
+            <div id="head"></div>
+            <div id="scheduleHead">
+                <div class="column"></div>
+                <div class="column">
+                    <label>Mon</label>
+                </div>
+                <div class="column">
+                    <label>Tue</label>
+                </div>
+                <div class="column">
+                    <label>Wed</label>
+                </div>
+                <div class="column">
+                    <label>Thr</label>
+                </div>
+                <div class="column">
+                    <label>Fri</label>
+                </div>
+            </div>
+            <div id="rows">
+                <div class="row" ng-repeat="classRow in classes track by $index">
+                    <div class="column" ng-repeat="class in classRow | limitTo: (1) track by $index">
+                        <label>{{class.HORAINICIO}} - {{class.HORAFIM}}</label>
+                    </div>
+                    <div class="column" ng-class="{'haveClass':class.haveClass == true}" ng-repeat="class in classRow | limitTo: (1 - classRow.length) track by $index">
+                        <label>{{class.nomesala}}</label>
+                    </div>
+                    
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    
+</div>

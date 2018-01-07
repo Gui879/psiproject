@@ -1,0 +1,15 @@
+<div id="topBar">
+    <div  style="width:auto;" class="tab" ui-sref="user.programs.list">
+        <span>Programs' List</span>
+        
+    </div>
+    <div style="width:auto;" class="tab" ui-sref="user.programs.createProgram" >
+        <span>New Program</span>
+    </div>
+    
+    <div ng-style="tabStyle" ng-click ="changeview(tab,$index)" class="tab"  ng-repeat="tab in tabs track by $index">
+        <span>{{tab.NOME}}</span> <span  ng-click="closeTab($index,tab)" class="remove"><i class="icon-cross"></i></span>
+    </div>
+    
+</div>
+<div ui-view></div>

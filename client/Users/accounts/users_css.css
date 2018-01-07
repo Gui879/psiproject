@@ -1,0 +1,880 @@
+#menu{
+    display: block;
+    overflow: auto;
+}
+#menu>#userList{
+    position: relative;
+    width: 80%;
+    margin:0 auto;
+    min-width: 585px;
+    overflow-x: auto;
+    margin-top: 30px;
+}
+#userList #header{
+    border-bottom: 10px solid #5C666C;
+    display: block;
+    width: 100%;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    height: auto;
+    height: 28px;
+}
+#userList #rows{
+    position: relative;
+    max-height: calc(100% - 250px);
+    overflow-y: auto;
+}
+#userList #header>span>i{
+    font-size: 10px;
+    padding: 2px;
+    padding-right: 3px;
+    border-radius: 100%;
+    display: inline-block;
+    width: 10px;
+    text-align: center;
+    margin-left: 5px;
+}
+#userList #header>span>i:hover{
+    background-color: rgba(92,102,108,0.3);
+}
+#userList span{
+    color: black;
+    display: block;
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+#rows .userRow{
+    padding-left: 10px;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: -webkit-calc(100% - 10px);
+    width: calc(100% - 10px);
+    cursor:pointer;
+}
+
+#rows .userRow:hover{
+   background-color: #5C666C;
+    color: white;
+    font-weight: bold;
+    animation: colorChange 2s infinite;
+    border-left: 10px solid rgb(96, 198, 208);
+    width: calc(100% - 20px);
+   
+}
+#rows .userRow:hover span{
+    color: black;
+}
+
+@keyframes colorChange{
+    0%
+  {
+    background-color: rgba(93, 122, 128,0.6);
+  }
+
+  50%
+  {
+    background-color: rgba(93, 122, 128,0.7);
+  }
+      100%
+  {
+    background-color: rgba(93, 122, 128,0.6);
+  }
+}
+
+
+
+#rows .userRow:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+
+#rows .userRow:nth-child(odd):hover{
+    background-color: #5C666C;
+     
+}
+#userType{
+    display: block;
+    height: 40px;
+}
+#uploadPhoto{
+    height: inherit !important;
+}
+form>i,form>input{
+    display: none;
+}
+#userType input[type="radio"]{
+    display: none;
+}
+#userType label{
+    display: block;
+    width: -webkit-calc(50% - 40px);
+    width: calc(50% - 40px);
+    margin: 10px;
+    padding: 10px;
+    background-color:rgba(92,102,108,0.3);
+    position: relative;
+    float: left;
+    cursor:pointer;
+}
+.userTypeSelected{
+    background-color: rgba(92,102,108,0.8) !important;
+}
+#userType label:hover {
+    background-color: rgba(92,102,108,0.8);
+    transition: background-color 1s;
+}
+#courses{
+    display: block;
+    height:90%; 
+    overflow-y: auto;
+    border: 0;
+    background-color: transparent;
+}
+#footer1{
+    position: static;
+    height: 45%;
+}
+
+.selected{
+    background-color: #5C666C;
+}
+
+.course:hover {
+    background-color: #5C666C;
+    
+}
+
+.course:nth-child(odd){
+    margin-left: 0;
+}
+.course:nth-child(even){
+    margin-right: 0;
+}
+
+#menuDark,#menuDark2{
+    width: 100%;
+    height: -webkit-calc(100% - 55px);
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-timing-function: ease-in-out;
+    transition: 3s;
+    display: none;
+}
+#menuDark2{
+    z-index: 10;
+}
+#menuDark #userPopup, #menuDark #addUser,#menuDark2 #confirm{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    animation: appear 0.5s 1;
+}
+#menuDark #userPopup{
+    width: 70%;
+    height: 70%;
+    position: relative;
+}
+#menuDark2 #confirm{
+    width: 300px;
+    height: auto;
+}
+#menuDark #userPopup #topbar,#menuDark #addUser #topbar,#menuDark2 #confirm #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 40px;
+}
+#menuDark #userPopup #topbar #cross, #menuDark #addUser #topbar #cross,#menuDark2 #confirm #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 7.5px;
+    color: white;
+    padding: 5px;
+}
+#menuDark #userPopup #topbar #cross:hover,#menuDark #addUser #topbar #cross:hover,#menuDark2 #confirm #topbar #cross:hover{
+    background-color: rgba(92,102,108,0.5);
+}
+#menuDark #userPopup #cross{
+    cursor:pointer;
+}
+#menuDark #userPopup #header{
+    width: 100%;
+    height: 130px;
+    border-bottom: 10px solid rgba(92,102,108,1);
+    margin-top: 20px;
+}
+#menuDark #userPopup #header img{
+    border-radius: 10000px;
+    height: 150px;
+    width: 150px;
+    margin-left: 50px;
+    position: absolute;
+    object-fit:cover;
+}
+
+#userName{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 225px;
+    display: inline-block;
+    margin-top: 30px;
+    width: calc(100% - 250px);
+}
+#userNumber{
+    margin-top: 0;
+    display: inline-block;
+    font-size: 15px;
+    width: calc(100% - 250px);
+    margin-left: 225px;
+}
+
+#userType2{
+    margin-top: 0;
+    display: inline-block;
+    font-size: 15px;
+    width: calc(100% - 250px);
+    margin-left: 225px;
+}
+#popupcontent{
+    height: calc(100% - 235px);
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+#header #buttons{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 50px;
+    margin-right: 10px;
+}
+#header #button{
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding: 6px;
+    font-size: 15px;
+    border-radius: 20px;
+    text-align: left;
+}
+#header #button:hover{
+    background-color: rgba(92,102,108,0.7);
+}
+#header #button #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+#header #button #icon{
+    font-size: 10px;
+}
+#button label{
+    font-size: 15px !important;
+    line-height: 25px;
+    top: -1;
+    padding-right: 5px;
+    margin: 0 !important;
+    width: auto !important;
+    float: none !important;
+    font-weight: normal !important;
+}
+#head{
+    width: 100%;
+    text-align: right;
+    margin: 0 auto;
+    height: 37px;
+}
+#searchBar,#addButon{
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 20px;
+}
+#searchBar:hover{
+    background-color: rgba(92,102,108,0.7);
+}
+#addButon{
+    margin-top: 20px;
+    cursor:pointer;
+    
+}
+
+#addButon:hover{
+    background-color: rgba(92,102,108,1);
+}
+
+#addButon #icon{
+    font-size: 15px;
+    display: inline-block;
+    cursor:pointer;
+}
+#addButon label{
+    font-size: 18px;
+    line-height: 25px;
+    top: -1;
+    padding-right: 5px;
+    display: inline-block;
+    cursor:pointer;
+}
+#searchBar #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+
+#searchBar input{
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 250px;
+    font-family: 'Quicksand';
+    color: white;
+    font-weight: bold;
+}
+input:focus {
+    outline-width: 0;
+}
+
+#menuDark #addUser{
+    width: 40%;
+    max-width: 500px;
+    height: auto;
+}
+#menuDark #addUser #popupcontent{
+    position: relative;
+    width: calc(100% - 60px);
+    margin: 30px;
+    height: calc(100% - 100px);
+    
+}
+#menuDark #userPopup #popupcontent{
+    position: absolute;
+    width: calc(100% - 60px);
+    height: calc(100% - 260px);
+    bottom: 30px;
+    left: 30px;
+}
+
+#menuDark #userPopup .userName{
+    display:inline-block;
+    float:left;
+    margin-left:220px;
+    margin-top:30px;
+    
+}
+
+#menuDark #userPopup .userName input{
+    font-size: 17px;
+    font-weight:bold;
+    width: auto; 
+    border: 0px;
+    margin-left: 5px;
+    background-color: rgba(92,102,108,0.3);
+    padding: 5px;
+    font-family: 'Quicksand';
+    float:left; 
+}
+
+#menuDark #userPopup #popupcontent #courses{
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 100%;
+}
+#menuDark #userPopup #popupcontent #left{
+    position: relative;
+    float: right;
+    width: calc(30% - 20px);
+    height: 100%;
+}
+
+#menuDark #userPopup #popupcontent #left ul{
+    list-style-type: none;
+}
+#menuDark #userPopup #popupcontent #left #contacts, #events{
+    width: 100%;
+    height: 50%; 
+    position: relative;
+}
+
+#menuDark #userPopup #popupcontent #courses .header,#menuDark #userPopup #popupcontent #left span{
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 10px solid rgba(92,102,108,1);
+    text-align: left;
+}
+#menuDark #userPopup #popupcontent #courses #courseCells{
+    max-height: calc(100% - 37px);
+    overflow-y: auto;
+}
+#menuDark #userPopup #popupcontent #courses #courseCells .course{
+    display: block;
+    width: -webkit-calc(50% - 50px);
+    width: calc(50% - 50px);
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    float: left;
+    border-left: 10px solid #5C666C;
+    background-color:rgba(92,102,108,0.3);
+    -webkit-transition: background-color 2s;
+    -webkit-transition: color 0.5s;
+    margin: 10px;
+    width: calc(50% - 50px);
+    text-align:left;
+    height: 45px;
+}
+
+#menuDark #userPopup #popupcontent #courses #courseCells .course:hover .coursename{
+    color:white;
+}
+
+#menuDark #userPopup #popupcontent #courses #courseCells .course .coursename{
+    font-size: 15px;
+    font-weight: normal;
+    display: inline-block;
+    border-bottom: 0;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#menuDark #userPopup #popupcontent #courses #courseCells .course .icon{
+    margin-top:0px;
+    margin-right:0px;
+    top:0px;
+    right:0px;
+    width:14px;
+    height:20px;
+    float:right;
+    cursor:pointer;
+}
+
+
+
+
+#menuDark #userPopup #popupcontent #courses #courseCells .course i{
+    font-size:13px;
+}
+
+#imgClass{
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px !important;
+    position: relative;
+    margin-top: 30px;
+    border-radius: 100%;
+}
+#imgClass img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit:cover;
+    z-index: 1;
+}
+#imgClass #overlay, #imgClass #fake{
+    background-color: rgba(96,198,208,0.5);
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 100px;
+}
+#imgClass:hover #overlay{
+   opacity: 1; 
+}
+#imgClass #overlay{
+    z-index: 10;
+}
+#imgClass #fake{
+    border-radius: 10000000000%;
+    z-index: 9;
+    opacity: 1;
+}
+#right span,input{
+    display: block;
+    text-align: left;
+}
+#right span{
+    font-weight: bold;
+}
+#right input{
+    font-size: 18px;
+    width: 100%;
+    border: 0;
+    background-color: rgba(92,102,108,0.3);
+    padding: 5px;
+    font-family: 'Quicksand';
+}
+#right #buttons button{
+    height: 50px !important;
+    margin: 10px !important;
+    width: calc(50% - 20px) !important;
+    background-color: rgba(92,102,108,0.3) !important;
+    border-radius: 0px;
+    text-align: center;
+    margin-bottom: 30px !important;
+}
+#right #buttons{
+    margin-top: 20px;
+    height: auto;
+    margin-bottom: 20px;
+}
+#right #buttons button:hover{
+    background-color: rgba(92,102,108,0.7) !important
+}
+@keyframes enfase{
+    0%
+  {
+    transform: scale( .1);
+  }
+
+  100%
+  {
+    transform: scale( 1 );
+  }
+}
+#courseCells>#warning{
+    display: block;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin-top: 20px;
+}
+#courseCells>#warning>i{
+    font-size: 150px;
+    width: 60%;
+    color: rgba(92,102,108,1);
+    margin: 0 auto;
+    display: block;
+    animation: alert 5s infinite;
+}
+#courseCells>#warning>span{
+    font-size: 30px;
+    color: rgba(92,102,108,1);
+    display: block;
+}
+#courseCells::-webkit-scrollbar{
+    border-radius: 10px;
+    width: 20px   
+}
+  
+#courseCells::-webkit-scrollbar-track{
+    background: rgba(92,102,108,1);
+    border-left: 9px solid white;
+    border-right: 9px solid white;
+    width: 7px;
+}  
+#courseCells::-webkit-scrollbar-thumb{
+    background: rgba(92,102,108,1);
+    border-left: 7px solid white;
+    border-right: 7px solid white;   
+}
+#contactsInfo{
+    max-height: calc(100% - 30px);
+    overflow-y: auto;
+}
+#contactsInfo>label{
+    display: block;
+    width: 100%;
+}
+#contactsInfo>label:nth-child(1),#contactsInfo>label:nth-child(4){
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+#contactsInfo>label:nth-child(2),#contactsInfo>label:nth-child(5){
+    font-size: 14px;
+    text-align: right;
+}
+#contactsInfo>input{
+    font-size: 15px;
+    width: 100%; 
+    border: 0px;
+    text-align: right;
+    background-color: rgba(92,102,108,0.3);
+    padding: 5px;
+    font-family: 'Quicksand';
+    float:left;
+    margin-bottom: 9px;
+}
+#eventsContent>#warning{
+    display: block;
+    right: 0;
+    left: 0;
+    margin-top: 10px;
+    max-height: 100%;
+}
+#eventsContent{
+    max-height: calc(100% - 25px);
+    overflow-y: auto;
+}
+#eventsContent>#warning>i{
+    font-size: 80px;
+    width: 60%;
+    color: rgba(92,102,108,1);
+    margin: 0 auto;
+    display: block;
+    animation: alert 5s infinite;
+}
+#eventsContent>#warning>span{
+    font-size: 15px !important;
+    color: rgba(92,102,108,1);
+    display: block !important;
+    border: 0 !important;
+    text-align: center !important;
+}
+#eventsContent>#event{
+    position: absolute;
+    max-height: calc(100% - 100px);
+    background-color: rgba(92,102,108,0.3);
+    width: calc(100% - 10px);
+    border-left: 10px solid rgba(92,102,108,1);
+    top: 50%;
+    transform: translateY(-50%);
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+#eventsContent>#event>label:nth-child(1){
+    display: block;
+    width: calc(100% - 5px);
+    text-align: left;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+#eventsContent>#event>label:nth-child(2),#eventsContent>#event>label:nth-child(4),#eventsContent>#event>label:nth-child(6){
+    display: block;
+    text-align: left;
+    font-size: 10px;
+    width: 30px;
+    margin-left: 5px;
+    position: relative;
+    float: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#eventsContent>#event>label:nth-child(3),#eventsContent>#event>label:nth-child(5),#eventsContent>#event>label:nth-child(7){
+    display: block;
+    text-align: right;
+    font-size: 10px;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+#uploadFoto{
+    display: none;
+}
+@keyframes appear {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+@media only screen and (max-width: 1420px, max-height: 720px) {
+    #menuDark #userPopup #popupcontent{
+        overflow-y: auto;
+    }
+    #menuDark #userPopup #popupcontent #courses{
+        width: 100%;
+        position: relative;
+        float: none;
+        margin: 0;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        margin-bottom: 20px;
+    }
+    #menuDark #userPopup #popupcontent #left{
+        width: 100%;
+        height: 200px;
+        position: relative;
+        float: none;
+        margin: 0;
+    }
+    #menuDark #userPopup #popupcontent #left #contacts, #events{
+        width: calc(50% - 10px);
+        max-width: none;
+        float: left;
+        height: 100%;
+    }
+    #menuDark #userPopup #popupcontent #left #contacts{
+        margin-right: 10px;
+    }
+    #menuDark #userPopup #popupcontent #left #events{
+        margin-left: 10px;
+    }
+    #menuDark #userPopup #popupcontent #courses{
+        height: auto;
+        max-height: none;
+    }
+    #courseCells>#warning{
+        display: block;
+        position: relative;
+        right: 0;
+        left: 0;
+        margin-top: 20px;
+    }
+    #courseCells>#warning>i{
+        font-size: 100px;
+        width: 60%;
+        color: rgba(92,102,108,1);
+        margin: 0 auto;
+        display: block;
+        animation: alert 5s infinite;
+    }
+    #courseCells>#warning>span{
+        font-size: 20px;
+        color: rgba(92,102,108,1);
+        display: block;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    #menuDark #userPopup #popupcontent{
+        overflow-y: auto;
+    }
+    #menuDark #userPopup #popupcontent #courses{
+        width: 100%;
+        position: relative;
+        float: none;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    #menuDark #userPopup #popupcontent #left{
+        width: 100%;
+        height: auto;
+        position: relative;
+        float: none;
+        margin: 0;
+    }
+    #menuDark #userPopup #popupcontent #left #contacts, #events{
+        width: 100%;
+        max-width: none;
+        float: none;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    #menuDark #userPopup #popupcontent #left #events{
+        height: 200px;
+        margin-bottom: 0;
+    }
+    #menuDark #userPopup #popupcontent #left #contacts{
+        margin-right: 0;
+    }
+    #menuDark #userPopup #popupcontent #left #events{
+        margin-left: 0;
+    }
+}
+@media only screen and (max-height: 720px) {
+    #menuDark #userPopup #header{
+        height: 50px;
+    }
+    #menuDark #userPopup #header>img{
+        display: none;
+        
+    }
+    #userName{
+        margin-left: 10px;
+        margin-top: 0;
+        width: auto;
+    }
+    #userNumber{
+        display: none;
+    }
+
+    #userType2{
+        display: none;
+    }
+    #menuDark #userPopup .userName{
+        display:inline-block;
+        float:left;
+        margin-left:10px;
+        margin-top:0;
+
+    }
+
+    #menuDark #userPopup .userName input{
+        font-size: 17px;
+        font-weight:bold;
+        width: 120px; 
+        border: 0px;
+        margin-left: 5px;
+        background-color: rgba(92,102,108,0.3);
+        padding: 5px;
+        font-family: 'Quicksand';
+        float:left; 
+    }
+    #menuDark #userPopup #popupcontent{
+        height: calc(100% - 180px);
+    }
+}
+
+#menuDark2 #confirm label{
+    display: block;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}
+#menuDark2 #actionButtons{
+    clear: both;
+    overflow: hidden;
+    margin: 30px;
+}
+#menuDark2 #actionButtons button{
+    height: 50px !important;
+    margin: 10px !important;
+    margin-top: 40px;
+    width: calc(50% - 20px) !important;
+    background-color: rgba(92,102,108,0.3) !important;
+    border-radius: 0px;
+    text-align: center;
+}
+#menuDark2 #actionButtons button:nth-child(1){
+    margin-right: 10px;
+}
+#menuDark2 #actionButtons button:nth-child(2){
+    margin-left: 10px;
+}
+#menuDark2 #actionButtons button:hover{
+    background-color: rgba(92,102,108,0.7) !important;
+}
+#right input{
+    background-color: rgba(92,102,108,0.3) !important;
+}
+#right input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(206,209,211) inset;
+    background-color: rgba(92,102,108,0.3) !important;
+}

@@ -1,0 +1,106 @@
+#lateralMenu, #content {
+    position: relative;
+    float: left;
+}
+a{
+    color: white;
+}
+#lateralMenu{
+    background-color: rgba(92,102,108,1);
+    width: 250px;
+    height: 100%;
+}
+
+#perfil{
+    width:100%;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+#perfil img{
+    width: 125px;
+    height: 125px;
+    border-radius: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    object-fit:cover;
+}
+#perfil label{
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+}
+#lateralMenu #options{
+    max-height: calc(100% - 300px);
+    overflow: auto;
+    overflow-y: auto;
+    margin-right: 5px;
+    z-index: 3;
+}
+#lateralMenu #options::-webkit-scrollbar{
+    background-color: transparent;
+    width: 5px;
+    padding-right: 5px;
+}
+#lateralMenu #options::-webkit-scrollbar-thumb{
+    background-color:rgb(169,169,169);
+    border-radius: 20px;
+    width: 5px;
+}
+#lateralMenu #options .option{
+    width:100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    cursor: pointer;
+
+}
+
+
+#lateralMenu #options .option .logo{
+    display: inline-block;
+    width: 30px;
+    margin-left: 25px;
+    text-align: center;
+}
+#lateralMenu #options .option label{
+    display: inline-block;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+#logout{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 40px;
+    color: white;
+    background-color: rgba(255,0,0,0.4);
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 20px;
+}
+
+
+.logout{
+    cursor:pointer;
+}
+.logout:hover #logout{
+    background-color: rgba(255,0,0,0.6);
+}
+
+

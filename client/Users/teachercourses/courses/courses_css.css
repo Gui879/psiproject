@@ -1,0 +1,263 @@
+#menu{
+    display: block;
+    overflow: auto;
+}
+#courses{
+    max-width: 80%;
+    display:block;
+    margin: 0 auto;
+    overflow-y: auto;
+    position: static;
+}
+#courses{
+    max-height: calc(100% - 147.7px);
+}
+
+.tab{
+    width:auto;
+    padding:1px;
+    cursor:pointer;
+    max-width:450px;
+}
+#searchBar,#addButon{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 20px;
+}
+#addButon{
+    margin-top: 10px;
+}
+#searchBar #icon,#addButon #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+#addButon #icon{
+    font-size: 15px;
+}
+#addButon label{
+    font-size: 20px;
+    line-height: 25px;
+    top: -1;
+    padding-right: 5px;
+}
+#searchBar input{
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 250px;
+    font-family: 'Quicksand';
+}
+input:focus {
+    outline-width: 0;
+}
+
+#courses .course {
+    width: calc(50% - 35px);
+    margin: 10px;
+    border-left: 10px solid #5C666C;
+    background-color: white;
+    text-align: left;
+    min-height: 100px;
+    max-width: 350px;
+    min-width: 250px;
+    display: inline-block;
+    overflow: visible;
+    word-wrap: break-word;
+    overflow: hidden;
+    position: relative;
+    text-align: middle;
+    cursor: pointer;
+}
+.course label{
+    display: inline-block;
+    padding-left: 5px;
+    width: calc(100% - 5px);
+    cursor: pointer;
+}
+.course label:first-child{
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+}
+.course label:nth-child(2){
+    margin-top: 10px;
+}
+.course label:nth-child(3){
+    font-size: 10px;
+}
+#menuDark{
+    width: 100%;
+    height: -webkit-calc(100% - 55px);
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-timing-function: ease-in-out;
+    transition: 3s;
+    display: none;
+
+}
+#menuDark #addCourse{
+    width: 40%;
+    max-height: 60%;
+    background-color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+#menuDark #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    height: 40px;
+    font-size: 15px;
+}
+#menuDark #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 12.5px;
+    color: white;
+}
+#menuDark #addCourse #popupcontent #inputs{
+    
+    overflow-y: auto;
+}
+
+#menuDark #addCourse #popupcontent #inputs input{
+    width: 100%;
+    border: 0;
+    text-align: left;
+    background-color: rgba(92,102,108,0.3);
+    font-size: 20px;
+    padding: 5px;
+    font-family: 'Quicksand';
+}
+#menuDark #addCourse #popupcontent #inputs select{
+    width: 100%;
+    background-color: rgba(92,102,108,0.3);
+    color: white;
+    font-family: 'Quicksand';
+    font-size: 20px;
+}
+#menuDark #addCourse #popupcontent #inputs #teachHours{
+    background-color: rgba(92,102,108,0.3);
+}
+#menuDark #addCourse #popupcontent #inputs #teachHours input{
+    width: 50px;
+    background-color: transparent;
+}
+#menuDark #addCourse #popupcontent #inputs #teachHours label{
+    display: inline-block;
+    width: calc(100% - 50px);
+    font-size: 13px;
+    margin-top: 10px;
+}
+#menuDark #addCourse #popupcontent{
+    width: calc(100%);
+    height: auto;
+    position: relative;
+}
+#menuDark #addCourse #popupcontent #contentContent{
+    width: calc(100% - 60px);
+    margin: 30px;
+    height: 500px;
+}
+#menuDark #addCourse #popupcontent #inputs label{
+    width: 100%;
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 10px;
+}
+#menuDark #addCourse #buttons{
+  width: auto;
+  height:50px;
+  position:absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+#menuDark #addCourse #buttons button{
+    background-color: rgba(92,102,108,0.3);
+    border-radius: 0;
+    width: 100px;
+    text-align: center;
+    height: 50px;*/
+    display: block;
+    position: static;
+    float: none;
+}
+
+#menuDark #addCourse #popupcontent .teacherOption{
+    height: 40px;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    clear: both;
+}
+#menuDark #addCourse #popupcontent .teacherOption img{
+    width: 40px;
+    margin-left: 5px;
+    display: inline-block;
+    position: relative;
+    float: left;
+    border-radius: 100%;
+}
+.teacherOption label{
+    display: inline-block;
+    width: calc(100% - 50px) !important;
+    position: relative;
+    float: right;
+    line-height: 40px;
+    margin-top: 0 !important;
+}
+#menu>#warning,#menu>#warning2{
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+}
+#menu>#warning>i,#menu>#warning2>i{
+    font-size: 200px;
+    width: 300px;
+    color: rgba(92,102,108,1);
+    margin: 0 auto;
+    display: block;
+    animation: alert 5s infinite;
+}
+#menu>#warning>span,#menu>#warning2>span{
+    font-size: 40px;
+    color: rgba(92,102,108,1);
+    display: block;
+}
+.course:hover{
+    background-color: rgba(92,102,108,0.2)!important;
+    animation: borderChanging 2s infinite;
+}
+@keyframes borderChanging{
+    0%{border-left: 10px solid #5C666C;}
+    50%{border-left: 10px solid rgb(96,198,208);}
+    100%{border-left: 10px solid #5C666C;}
+}
+@keyframes appear {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}

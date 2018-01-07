@@ -1,0 +1,126 @@
+#menu{
+    display: block;
+}
+#calendar{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+}
+#calendar #header{
+    width: 100%;
+    background-color: rgba(92,102,108,0.3);
+    clear: both;
+    overflow: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+#calendar #header span:nth-child(1){
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    padding: 5px;
+}
+#calendar #header span:nth-child(2){
+    width: calc(100% - 80px);
+    position: relative;
+    margin: 0 auto;
+}
+#calendar #header span:nth-child(3){
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#calendar #header span:nth-child(3):hover,#calendar #header span:nth-child(1):hover{
+    background-color: rgba(92,102,108,0.5);
+    border-radius: 100%;
+}
+#calendar #calendarContent .row{
+    width: 100%;
+    overflow: hidden;
+}
+#calendar #calendarContent .row:nth-child(odd) .day{
+    background-color: rgba(92,102,108,0.1);
+}
+#calendar #calendarContent .row .day{
+    width: 14.28%;
+    position: relative;
+    float: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    overflow: hidden;
+}
+#calendar #calendarContent .row .day>span{
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 100%;
+    overflow: hidden;
+}
+#calendar #calendarContent .row .day>span>div{
+    display: none;
+}
+#calendar #calendarContent .row .currentday>span{
+    background-color: rgba(96,198,208,0.4);
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 100%;
+}
+#calendar #calendarContent .row .notMonthDays{
+    color: rgba(92,102,108,0.5);
+    font-weight: normal;
+    font-size: 15px;
+}
+#calendar #calendarContent .row .haveEvents>span{
+    background-color: rgba(255,0,0,0.5);
+    font-weight: normal;
+    font-size: 15px;
+}
+#calendar #calendarContent .row .pendent{
+    display: block !important;
+    position: absolute;
+    top: 5px;
+    right: calc(50% - 20px);
+    font-size: 17px;
+    animation: alert 5s infinite;
+}
+#calendar #calendarContent .row .mouseOver>span{
+    background-color: rgba(92,102,108,0.6);
+}
+@keyframes alert{
+    0%
+  {
+    transform:scale(1)
+  }
+    5%
+  {
+    transform:scale(1.2)
+  }
+  10%
+  {
+    transform:scale(1)
+  }
+  15%
+  {
+    transform:scale(1.2)
+  }
+  20%
+  {
+    transform:scale(1)
+  }
+  100%
+  {
+    transform:scale(1)
+  }
+}

@@ -1,0 +1,302 @@
+#menu{
+    display: block;
+    overflow: auto;
+}
+#slide3,#slide2{
+    position: relative;
+    margin: 30px;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+    display: none;
+}
+#slide1{
+    position: relative;
+    margin: 30px;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+}
+
+#searchBar{
+    display: none;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 20px;
+}
+#searchBar #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+#searchBar input{
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 250px;
+    font-family: 'Quicksand';
+}
+input:focus {
+    outline-width: 0;
+}
+#courses .course {
+    width: calc(50% - 35px);
+    margin: 10px;
+    border-left: 10px solid #5C666C;
+    background-color: white;
+    text-align: left;
+    min-height: 100px;
+    max-width: 350px;
+    min-width: 250px;
+    display: inline-block;
+    overflow: visible;
+    word-wrap: break-word;
+    overflow: hidden;
+    position: relative;
+    text-align: middle;
+    cursor: pointer;
+}
+.course label{
+    display: inline-block;
+    padding-left: 5px;
+    width: calc(100% - 5px);
+    cursor: pointer;
+}
+.course label:first-child{
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+}
+.course label:nth-child(2){
+    margin-top: 10px;
+}
+.course label:nth-child(3){
+    font-size: 10px;
+}
+#slide2>#header,#slide3>#header{
+    width: 90%;
+    margin: 0 auto;
+    height: 30px;
+    text-align: left;
+    position: relative;
+}
+#slide2>#header>#goBack,#slide3>#header>#goBack{
+    width: 125px;
+}
+#goBack>i{
+    display: inline-block;
+    height: 100%;
+    font-size: 30px;
+    transition: font-size 0.5s;
+}
+#goBack>span{
+    display: inline-block;
+    height: 100%;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: font-size 0.5s;
+}
+#goBack:hover i{
+    font-size: 31px;
+}
+#goBack:hover span{
+    font-size: 26px;
+}
+#menuDark{
+    width: 100%;
+    height: calc(100% - 55px);
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-timing-function: ease-in-out;
+    transition: 3s;
+    display: none;
+}
+
+#menuDark #examPopup{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 400px;
+    height: 500px;
+    animation: appear 0.5s 1;
+}
+
+#menuDark #examPopup #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 40px;
+}
+#menuDark #examPopup #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 7.5px;
+    color: white;
+    padding: 5px;
+}
+#menuDark #examPopup #topbar #cross:hover{
+    background-color: rgba(92,102,108,0.5);
+}
+#menuDark #examPopup #popupcontent{
+    display: block;
+    margin: 30px;
+    
+}
+#popupcontent label{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+#popupcontent label:nth-child(1){
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#popupcontent span{
+    display: block;
+    width: calc(100% - 10px);
+    background-color: rgba(92,102,108,0.3);
+    padding: 5px;
+    line-height: 25px;
+    font-size: 15px;
+}
+#buttons{
+    margin-top: 30px;
+    height: 55px;
+    text-align: center;
+    
+}
+#buttons button{
+    background-color: rgba(92,102,108,0.3);
+    height: 50px;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    float: none;
+    display: inline-block;
+}
+#buttons button:hover{
+    background-color: rgba(92,102,108,0.7);
+}
+#buttons button:nth-child(1){
+    margin-right: 10px;
+}
+#buttons button:nth-child(2){
+    margin-left: 10px;
+}
+#courses>#warning{
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+}
+#courses>#warning>i{
+    font-size: 200px;
+    width: 300px;
+    color: rgba(92,102,108,1);
+    margin: 0 auto;
+    display: block;
+    animation: alert 5s infinite;
+}
+#courses>#warning>span{
+    font-size: 40px;
+    color: rgba(92,102,108,1);
+    display: block;
+}
+#menuDark .sucess,#menuDark .failure{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: auto;
+    animation: appear 0.5s 1;
+}
+
+#menuDark .sucess #topbar,#menuDark .failure #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 40px;
+}
+#menuDark .sucess #topbar #cross,#menuDark .failure #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 12.5px;
+    color: white;
+}
+#menuDark .sucess #cross,#menuDark .failure #topbar #cross{
+    cursor:pointer;
+}
+#menuDark .sucess #popupcontent,#menuDark .failure #popupcontent{
+    height: calc(100% - 105px);
+    width: calc(100% - 60px);
+    margin: 30px;
+    overflow-y: auto;
+}
+#menuDark .sucess #popupcontent>span,#menuDark .failure #popupcontent>span{
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: transparent;
+}
+#menuDark .sucess #popupcontent>span:nth-child(2),#menuDark .failure #popupcontent>span:nth-child(2){
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#menuDark .sucess #popupcontent>span:nth-child(3),#menuDark .failure #popupcontent>span:nth-child(3){
+    font-size: 20px;
+    font-weight: normal;
+}
+#menuDark .sucess #popupcontent>i,#menuDark .failure #popupcontent>i{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 100px;
+}
+.course:hover{
+    background-color: rgba(92,102,108,0.2)!important;
+    animation: borderChanging 2s infinite;
+}
+@keyframes borderChanging{
+    0%{border-left: 10px solid #5C666C;}
+    50%{border-left: 10px solid rgb(96,198,208);}
+    100%{border-left: 10px solid #5C666C;}
+}
+@keyframes appear {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}

@@ -1,0 +1,27 @@
+<link href="/client/Users/teachercourses/courses/courses_css.css" type="text/css" rel="stylesheet">
+
+<div id="menu" >
+
+    <div id="searchBar">
+        <div id="icon"><span><i class="icon-search"></i></span></div>
+        <input type="text" ng-model="searchFilter">
+    </div>
+    
+    <div id="courses" >
+        <div class="course" ng-repeat="course in courses=(teachercoursesList | filter:searchFilter)"  ng-click="checkTab(course)">
+            <label>{{course.NOME}}</label>
+            <label>{{teachername[0].NAME}}</label>
+            <label>Teacher</label>
+        </div>
+    </div>
+    <div id="warning">
+        <i class="icon-error"></i>
+        <span>There are no courses</span>
+        <span>assigned to you!</span>
+    </div>
+    <div id="warning2" ng-hide="courses.length!=0 || teachercoursesList.length==0">
+        <i class="icon-error"></i>
+        <span>No courses found!</span>
+    </div>
+
+</div>

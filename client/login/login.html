@@ -1,0 +1,39 @@
+<div id="leftSide">
+            <div id="head">
+                <img src="/client/shared/images/novaimslogo.png">
+            </div>
+            <div id="login">
+                <form id="inputs">
+                  <span>Username</span>
+                    <input ng-model="user.username" type="text">
+                    <span>Palavra-Passe</span>
+                    <input ng-model="user.password" type="password">
+                    <button style="cursor:pointer" ng-click="loginUser(user)" type="submit">ENTRAR</button>
+                </form>
+                <span ng-show="warning" >Wrong Username or Password!</span>
+            </div>
+            <div id="links">
+                <div class="link">
+                    <img src="/client/shared/images/website.png">
+                    <span>novaims.unl.pt</span>
+                </div>
+                <div class="link">
+                    <img src="/client/shared/images/moodle.png">
+                    <span>elearning.novaims.unl.pt</span>
+                </div>
+                <div class="link">
+                    <img src="/client/shared/images/facebook.png">
+                    <span>facebook.com/novaims</span>
+                </div>
+                <div class="link">
+                    <img src="/client/shared/images/instagram.png">
+                    <span>instagram.com/novaims</span>
+                </div>
+            </div>
+            
+</div>
+
+
+
+
+

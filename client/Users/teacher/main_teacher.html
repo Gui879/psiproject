@@ -1,0 +1,120 @@
+<link href="/client/Users/teacher/main_teacher_css.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/teacher/calendar.css" type="text/css" rel="stylesheet">
+
+<div id="topBar">
+                
+</div>
+<div id="menu">
+    <div id="outer">
+        <div id="leftSide">
+            <div id="inner">
+                    <div class="option" ng-click="changeState('user.teachercourses.list','tcourses')">                          
+                        <div class="content">
+                            <div class="icon">
+                                <i class="icon-class"></i>
+                            </div>
+                            <div class="optionName">
+                                Cadeiras
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option" ng-click="changeState('user.exams','exams')">
+                        <div class="content">
+                            <div class="icon">
+                                <i class="icon-exam"></i>
+                            </div>
+                            <div class="optionName">
+                                Exames
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option" ng-click="changeState('user.evaluation','evaluations')">
+                        <div class="content">
+                            <div class="icon">
+                                <i class="icon-class"></i>
+                            </div>
+                            <div class="optionName">
+                                Avaliações
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div id="rightSide">
+            <div id="calendar">
+                <div id="header">
+                    <span ng-click="prevMonth()"><i class="icon-angle-left"></i></span>
+                    <span>{{monthNames[month]}} {{year}}</span>
+                    <span ng-click="nextMonth()"><i class="icon-angle-right"></i></span>
+                </div>
+                <div id="calendarContent">
+                    <div class="row">
+                        <div class="day">Sun</div>
+                        <div class="day">Mon</div>
+                        <div class="day">Tue</div>
+                        <div class="day">Wed</div>
+                        <div class="day">Thu</div>
+                        <div class="day">Fri</div>
+                        <div class="day">Sat</div>
+                    </div>
+                    <div class="row" ng-repeat="row in calendarDays">
+                        
+                        <div class="day" ng-class="{'currentday':day.currentDay, 'notMonthDays':!day.monthDay, 'mouseOver':hover}" ng-repeat="day in row" ng-mouseenter="hover = true"
+     ng-mouseleave="hover = false"><span>{{day.day}}</span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<!--
+            <div id="menu">
+                <div id="display">
+                    
+                        <div id="leftMenu">
+                            <div id="inner">
+                            <div class="option">
+                                <div class="content">
+                                    Notícias Importantes
+                                </div>
+                            </div>
+                            <div class="option">                            
+                                <div class="content">
+                                    <div class="icon">
+                                        <i class="icon-class"></i>
+                                    </div>
+                                    <div class="optionName">
+                                        Cadeiras
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option">
+                                <div class="content">
+                                    <div class="icon">
+                                        <i class="icon-exam"></i>
+                                    </div>
+                                    <div class="optionName">
+                                        Exames
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option">
+                                <div class="content">
+                                    <div class="icon">
+                                        <i class="icon-class"></i>
+                                    </div>
+                                    <div class="optionName">
+                                        Avaliações
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                        </div>
+                        <div id="rightMenu">
+                            <div id="my-calendar"></div>
+                        </div>
+                    
+                </div>
+            </div>
+-->

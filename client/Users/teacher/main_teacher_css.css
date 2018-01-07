@@ -1,0 +1,54 @@
+#menu{
+    display: block;
+}
+#menu #outer{
+    clear: both;
+    margin: 30px;
+    width: calc(100% - 60px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display:flex;
+}
+#menu #outer>#leftSide{
+    width: 55%;
+    display: block;
+    vertical-align: middle;
+    background: none;
+    background-color: transparent !important;
+    max-height: calc(400px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width: 250px;
+    
+}
+#menu #outer>#leftSide>#inner{
+    position: static;
+    max-height: 90%;
+    overflow-y: auto;
+    margin: 20px;
+    margin: 0;
+}
+#menu #outer>#rightSide{
+    width: 45%;
+    position: relative;
+    float: right;
+    background-color: transparent;
+}
+#inner>.option{
+    border-top: 15px solid #5C666C;
+    display: inline-block;
+    min-width: 200px;
+    max-width: 450px;
+    width: 20%;
+    background-color: #FFFFFF;
+    height: 150px;
+    margin: 15px;
+    overflow: visible;
+    word-wrap: break-word;
+    overflow: hidden;
+    position: relative;
+    text-align: middle;
+    cursor:pointer;
+}
+

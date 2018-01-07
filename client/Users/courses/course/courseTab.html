@@ -1,0 +1,137 @@
+<link href="/client/Users/courses/course/courseTab_css.css" type="text/css" rel="stylesheet">
+
+<div id="menu" class="courseTab">
+    <div id="header">
+        <img ng-src="{{sourceresp}}">
+        <label ng-hide="editOption" id="courseName">{{courseName}}</label>
+        <input ng-show="editOption" ng-model="courseName"/>
+        <label ng-hide="editOption" id="teacher">{{teachername}}</label>
+        <select ng-show="editOption" ng-model="teacherid" ng-options="teacher.IDPROFESSOR as teacher.name for teacher in teacherList">
+        </select>
+        <div id="buttons">
+            <div id="button" ng-click="changeOption()" >
+                <div id="icon"><span><i class="icon-edit-modify-streamline"></i></span></div>
+                <label >{{editmode}}</label>
+            </div>
+            <div id="button" ng-click="showDelPopup()">
+                <div id="icon"><span><i class="icon-delete-garbage-streamline"></i></span></div>
+                <label>Delete</label>
+            </div>
+        </div>
+    </div>
+    <div id="navigationBar">
+        <i class="icon-angle-left" style="cursor:pointer" ng-click="slideChange()"></i>
+        <span>{{slidename}}</span>
+        <i class="icon-angle-right"style="cursor:pointer"  ng-click="slideChange()"></i>
+    </div>
+    <div class="courseContent" ng-show="details">
+        <div id="students">
+            <div id="head">
+                
+                <div id="searchBar">
+                    <div id="icon"><span><i class="icon-search"></i></span></div>
+                    <input type="text" ng-model="searchFilter">
+                </div>
+            </div>
+            <div id="header">
+                <span>Number</span>
+                <span>Name</span>
+                <span>Status</span>
+            </div>
+            <div id="rows">
+                <div class="studentRow" ng-repeat="student in studentsList" >
+                    <span>{{student.NUMINST}}</span>
+                    <span>{{student.NAME}}</span>
+                    <span>Estado</span>
+                </div>
+                <div id="warning" ng-hide="studentsList.length!=0">
+                    <i class="icon-error"></i>
+                    <span>There are no students</span>
+                    <span>enrolled on this course!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="courseContent" ng-hide="details">
+        <div id="schedule">
+            <div id="head"></div>
+            <div id="scheduleHead">
+                <div class="column"></div>
+                <div class="column">
+                    <label>Mon</label>
+                </div>
+                <div class="column">
+                    <label>Tue</label>
+                </div>
+                <div class="column">
+                    <label>Wed</label>
+                </div>
+                <div class="column">
+                    <label>Thr</label>
+                </div>
+                <div class="column">
+                    <label>Fri</label>
+                </div>
+            </div>
+            <div id="rows">
+                <div class="row" ng-repeat="classRow in classes track by $index">
+                    <div class="column" ng-repeat="class in classRow | limitTo: (1) track by $index">
+                        <label>{{class.HORAINICIO}} - {{class.HORAFIM}}</label>
+                    </div>
+                    <div class="column" ng-class="{'haveClass':class.haveClass == true, 'enable':editOption}" ng-repeat="class in classRow | limitTo: (1 - classRow.length) track by $index" ng-click="!editOption||insertClass($parent.$index,$index)">
+                        <label>{{class.nomesala}}</label>
+                    </div>
+                    
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+<div id="menuDark">
+    <div class="confirm" id="deletepopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to delete {{courseName}}?</label>
+        <div id="actionButtons">           
+            <button ng-click="deleteCourse()">Confirm</button>
+            <button ng-click="closePopup()">Cancel</button>
+        </div>
+    </div>
+    
+    <div class="confirm" id="editpopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to update {{coursename}}?</label>
+        <div id="actionButtons">           
+            <button ng-click="applyChanges(program)">Confirm</button>
+            <button ng-click="closePopup();loadData()">Cancel</button>
+        </div>
+    </div>
+    
+    <div class="sucess" id="deletesucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully deleted!</span>
+        </div>
+    </div>
+    
+    <div class="sucess" id="editsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully updated!</span>
+        </div>
+    </div>
+    
+    <div class="failure" id="failure">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-error"></i>
+            <span>Ups!</span>
+            <span>There are some technical problem!</span>
+        </div>
+    </div>
+</div>

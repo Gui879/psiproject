@@ -1,0 +1,107 @@
+<link href="/client/Users/programs/programs/programs_css.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/programs/createProgram/createProgram_css.css" type="text/css" rel="stylesheet">
+
+
+
+
+<div id="menu" >
+    <div id="navigationBar">
+        <div class="degreeOption">Bachelor</div>
+        <div class="degreeOption">Postgraduate</div>
+        <div class="degreeOption">Master</div>
+        <div class="degreeOption">Doctoral</div>
+        <hr />      
+    </div>
+    <form>
+        <label>Program's Name</label>
+        <input ng-model="program.name" type="text">
+        <label>Program Responsible</label>
+        <select ng-model="program.responsible" ng-options="teacher.IDPROFESSOR as teacher.name for teacher in teacherList" >
+        </select>
+        <div id="threeInput">
+            <div class="formPart">
+                <label>Variable Y</label>
+                <input ng-model="program.vary" type="number" ng-change="calculateCredits()">
+            </div>
+            <div class="formPart">
+                <label>Program's Duration</label>
+                <input ng-model="program.duration" type="number" ng-change="resetModel(program.duration)">
+            </div>
+            <div class="formPart">
+                <label>Hours p/ Semester</label>
+                <input ng-model="program.hours" type="number">
+            </div>
+        </div>
+        <div id="plan">
+            <div id="courses" >
+                <div id="header">Available Courses</div>
+                <div id="coursesRows">
+                    <ul dnd-list="models.lists[models.lists.length-1]" dnd-drop="callback({targetList: models.lists[models.lists.length-1], targetIndex: index, listname: 'qua'})" dnd-list="models.lists[models.lists.length-1]">
+                        <li ng-repeat="item in models.lists[models.lists.length-1]"
+                            dnd-callback="onDrop(models.lists[models.lists.length-1], $index, targetList, targetIndex,listname)"
+                            dnd-draggable="item"
+                            dnd-effect-allowed="move"
+                            dnd-selected="models.selected = item"
+                            ng-class="{'selected': models.selected === item}"
+                            class="hover"
+                            >
+                            {{item.label}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cadeirasselecionadas">
+                <div id="header">Study Plan</div>
+                <div id="semesters">
+                    <div id="semester" ng-repeat="list in models.lists | limitTo:(models.lists.length-1) track by $index">
+                    <label id="header" ng-hide="$index%2!=0">Year {{Math.round(($index+1)/2)}} - Fall</label>
+                    <label id="header" ng-hide="$index%2==0">Year {{Math.round(($index+1)/2)}} - Spring</label>
+                    <ul dnd-drop="callback({targetList: list, targetIndex: index, listname: 'qua'})" dnd-list="list">
+                        <li ng-repeat="item in list"
+                            dnd-callback="onDrop(list, $index, targetList, targetIndex,listname)"
+                            dnd-draggable="item"
+                            dnd-effect-allowed="move"
+                            dnd-selected="models.selected = item"
+                            ng-class="{'selected': models.selected === item, 'fundamental': list[$index].fundamental}"
+                            ng-click="toogleFundamental($index,list)"
+                            class="hover"
+                            >
+                            {{item.label}}<span ng-hide="!item.fundamental">&nbsp (F)</span> 
+                            <i ng-click="removeItem($index,list)" class="icon-cross"></i>
+                            <label ng-hide="program.vary==0 ||program.vary==undefined">{{item.creditos}} ECT</label>
+                            
+                        </li>
+                        <li class="credits" ng-hide="list.length==0 || program.vary==0 || program.vary==undefined"><label><b>Total of Credits:</b>&nbsp{{countCredits[$index]}}&nbsp ECT</label></li>
+                        <label ng-hide="list.length!=0">Drop here some courses!</label>
+                    </ul>
+
+                </div>
+                <div id="warning" ng-hide="models.lists.length>1">
+                    <i class="icon-error"></i>
+                    <span>Please, define the duration (in semesters) of the course!</span>
+                    <span>(The duration has the minimum of 1 semester and a maximum of 10 semester!)</span>
+                </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+    <div id="buttons">
+            <button ng-click="createProgram(program)" type="submit">Confirm</button>
+            <button type="submit" ui-sref="user.programs.list" >Cancel</button>
+            <span>{{result}}</span>
+        </div>
+</div>
+<div id="menuDark">
+    <div id="sucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <p>The new program was sucessfully created!</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<link href="/client/Users/accounts/users_css.css" type="text/css" rel="stylesheet">
+<div id="topBar">
+<a ui-sref="user.users">
+        <div class="tab">
+            <span>Users' List</span>
+        </div>
+    </a>
+    
+</div>
+<div style="display:'block'" id="menu" >
+
+    <div id="userList">
+        <div id="head">
+            <div id="searchBar">
+                <div id="icon"><span><i class="icon-search"></i></span></div>
+                <input type="text" ng-model="searchFilter">
+            </div>
+        </div>
+        <div id="header">
+            <span>Number<i class="icon-sort" ng-click="sortList('NUMINST')"></i></span>
+            <span>Name<i class="icon-sort" ng-click="sortList('NAME')"></i></span>
+            <span>User Type<i class="icon-sort" ng-click="sortList('Type')"></i></span>
+            <span>Registration Date<i class="icon-sort" ng-click="sortList('DATAREGISTO')"></i></span>
+        </div>
+        <div id="rows">
+            <div class="userRow" ng-repeat="user in userList | filter:searchFilter | orderBy: sortFilter" ng-click="userPopup(user); getCoursesByProfessor(user.NUMINST);getClosestEvent()">
+                <span>{{user.NUMINST}}</span>
+                <span>{{user.NAME}}</span>
+                <span>{{user.Type}}</span>
+                <span>{{user.DATE}}</span>
+            </div>            
+        </div>
+    </div>
+    <div id="addButon"  ng-click="addUserPopup()">
+        <div id="icon"><span><i class="icon-add"></i></span></div>
+        <label>Add New User</label>
+    </div>
+</div>
+<div id="menuDark">
+    
+    
+    <div id="userPopup">
+        <div id="topbar"><div id="cross" style = "cursor:pointer" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        <div id="header">
+            <img src="{{selectedUser.img}}">
+            <label ng-show="!editmode" id="userName">{{selectedUser.PRIMEIRONOME}} {{selectedUser.ULTIMONOME}}</label>
+            <div ng-show="editmode" class="userName">
+                <input type="text" ng-model="userChange.primeironome" />
+                <input type="text" ng-model="userChange.ultimonome" />
+            </div>
+            <label id="userNumber">{{selectedUser.NUMINST}}</label>
+            <label id="userType2">{{selectedUser.Type}}</label>
+            <div id="buttons">
+                <div id="button" ng-click="changeButton()"style="cursor:pointer">
+                    <div id="icon"><span><i class="icon-edit-modify-streamline"></i></span></div>
+                    <label style="cursor:pointer">{{editdone}}</label>
+                </div>
+                <div id="button" ng-click="confirmationShow()" style="cursor:pointer">
+                    <div id="icon"><span><i class="icon-delete-garbage-streamline"></i></span></div>
+                    <label style="cursor:pointer">Delete</label>
+                </div>
+            </div>
+        </div>
+        <div id="popupcontent">
+            <div id="courses">
+                <span class="header">Teached Courses</span>
+                <div id="courseCells">
+                    <div class="course" ng-repeat="course in coursesByProfessor" >
+                        <span class="coursename">{{course.NOME}}</span>
+                        <span ng-click="removeCourse(course,$index)" class="icon" ng-show="editmode"><i  class="icon-cross"></i></span>
+                    </div>
+                    <div id="warning">
+                        <i class="icon-error"></i>
+                        <span>There are no courses</span>
+                        <span>helded by this user!</span>
+                    </div>
+                </div>
+            </div>
+            <div id="left">
+                <div id="contacts">
+                    <span>Contacts</span>
+                    <div id="contactsInfo">
+                        <label>Email</label>
+                        <label ng-show="!editmode">{{selectedUser.email}}</label>
+                        <input ng-show="editmode" type="text" ng-model="userChange.email" />
+                        <label>Phone Number</label>
+                        <label ng-show="!editmode">{{selectedUser.numtelefone}}</label>
+                        <input ng-show="editmode" type="text" ng-model="userChange.numtelefone" />
+                    </div>
+                </div>
+                <div id="events">
+                    <span>Next Event</span>
+                    <div id="eventsContent">
+                        <div id="event"ng-hide="closestEvent.length==0">
+                            <label>{{closestEvent[0].NOME}}</label>
+                            <label>Room</label>
+                            <label>{{closestEvent[0].NOMESALA}}</label>
+                            <label>Hour</label>
+                            <label>{{closestEvent[0].HORA2}}</label>
+                            <label>Date</label>
+                            <label>{{closestEvent[0].DATA2}}</label>
+                        </div>
+                        <div id="warning" ng-hide="closestEvent.length!=0">
+                            <i class="icon-error"></i>
+                            <span>There are no events</span>
+                            <span>assigned to the user!</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="addUser">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        
+        <div id="popupcontent">
+            <div id="inputs">
+
+                <div id="userType">
+                    <label ng-click="toogle=false" ng-class="{'userTypeSelected': user.type=='a'}">
+                       <input required ng-model="user.type" type="radio" name="role" value="a">
+                       <i>Administrator</i>
+                    </label>
+                    <label required ng-click="toogle=true" ng-class="{'userTypeSelected': user.type=='p'}">
+                       <input ng-model="user.type" type="radio" name="role" value="p">
+                       <i>Teacher</i>
+                    </label>
+                </div>
+                
+                        <div id="imgClass">
+                            <img id="foto" style="width:100px;" alt="Click me to change the photo!" ngf-thumbnail="file || '/client/profilepics/default.png'"/>
+                            <div id="overlay">Edit Me!</div>
+                            <img id="fake" src="/client/profilepics/default.png">
+                        </div>
+                        <input 
+                           type="file" 
+                           ngf-select 
+                           ng-model="file" 
+                           name="file" 
+                           ngf-pattern="'image/*'"
+                           accept="image/*" 
+                           ngf-max-size="20MB" 
+                            id="uploadFoto"
+                           />  
+                <div id="right">
+                    <span>First Name</span>
+                    <input required ng-model="user.firstname" name="firstName" type="text" selected>
+                    <span>Last Name</span>
+                    <input required ng-model="user.lastname" name="lastName" type="text">
+                    <span>Phone Number</span>
+                    <input required  ng-model="user.phoneNumber" name="phoneNumber" type="number">
+                    <span>Email</span>
+                    <input required ng-model="user.email" name="email" type="email">
+                    <div id="buttons">
+                        
+                        <button type="submit" ng-click="createUser(user)">Confirm</button>
+                        <button ng-click="popuphide()">Cancel</button>
+                        {{result}}
+                    </div>
+                </div>
+       
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+<div id="menuDark2">
+    <div id="confirm">
+        <div id="topbar"></div>
+        <label>Are you sure you want to delete the selected user?</label>
+        <div id="actionButtons">           
+            <button ng-click="deleteUser()">Confirm</button>
+            <button ng-click="confirmationHide()">Cancel</button>
+        </div>
+    </div>
+</div>

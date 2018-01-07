@@ -1,0 +1,43 @@
+<link href="/client/Users/exams/daySchedule.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/bookedroom/bookedrooms_css.css" type="text/css" rel="stylesheet">
+
+<div id="topBar">
+    
+</div>
+<div id="menu" >
+    <div id="slide"> 
+        <div id="daySchedule">
+                <div id="header">
+                    <span ng-click="prevDay()"><i class="icon-angle-left"></i></span>
+                    <span>{{selectedDay}} {{monthNames[month]}} {{year}}</span>
+                    <span ng-click="nextDay()"><i class="icon-angle-right"></i></span>
+                </div>
+                <div id="schedule">
+                    <div class="row">
+                        <div class="hour"> </div>
+                        <div class="room" ng-repeat="room in rooms">{{room.NOMESALA}}</div>
+                    </div>
+                    
+                    <div id="rowscontent">
+                        <div ng-show="events.length == 0">Loading...</div>
+                        <div class="row" ng-repeat="eventRow in events ">
+                            
+                            <div class="hour" ng-repeat="eventColumn in events[$index] | limitTo: (1) track by $index">{{eventColumn.HORAINICIO}} - {{eventColumn.HORAFIM}}</div>
+                            <div class="event"  ng-style="{'width': 'calc((100% - 105px) / '+$scope.rooms.length+')'}" ng-class="{'emptyr':eventColumn.length==0}" ng-repeat="eventColumn in events[$index] | limitTo: (1-events[$index].length) track by $index">
+                                <span ng-click="confirm(rooms[$index].IDSALA,eventRow[0].IDHORA,$parent.$index,$index)" ng-class="{'exam':eventColumn[0].TIPO=='exam', 'class':eventColumn[0].TIPO=='class'}">
+                                    {{eventColumn[0].NOME}}
+                                    <span>
+                                        {{eventColumn[0].TIPO}}
+                                    </span>
+                                </span>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+    </div>
+</div>

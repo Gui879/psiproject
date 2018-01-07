@@ -1,0 +1,164 @@
+<link href="/client/Users/exams/createExam_css.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/exams/daySchedule.css" type="text/css" rel="stylesheet">
+<link href="/client/Users/teacher/calendar.css" type="text/css" rel="stylesheet">
+
+
+
+<div id="topBar">
+    <div class="tab" ui-sref="user.exams">
+        <span>Exams' List</span>
+    </div>
+    <div class="tab" ui-sref="user.newexam">
+        <span>New Exam</span>
+    </div>
+
+</div>
+<div id="menu">
+    <div id="slide1">
+        <div id="searchBar">
+            <div id="icon"><span><i class="icon-search"></i></span></div>
+            <input type="text" ng-model="searchFilter">
+        </div>
+
+        <div id="courses">
+            <div class="course" ng-click="nextSlide('slide1','slide2'); selectCourse($index);" ng-repeat="course in courses=(coursesList | filter:searchFilter)">
+                <label>{{course.NOME}}</label>
+                <label>adsfghsdfsdf</label>
+                <label>Teacher</label>
+            </div>
+            <div id="warning">
+                <i class="icon-error"></i>
+                <span>It's impossible to schedule</span>
+                <span>new exams! There are no</span>
+                <span>courses assigned to you!</span>
+            </div>
+            <div id="warning2" ng-hide="courses.length!=0 || coursesList.length==0">
+                <i class="icon-error"></i>
+                <span>No courses found!</span>
+            </div>
+        </div>
+    </div>
+    <div id="slide2">
+        <div id="header">
+            <div id="goBack" ng-click="nextSlide('slide2','slide1')">
+                <i class="icon-angle-left"></i>
+                <span>Courses</span>
+            </div>
+        </div>
+        <div id="calendar">
+                <div id="header">
+                    <span ng-click="prevMonth()"><i class="icon-angle-left"></i></span>
+                    <span>{{monthNames[month]}} {{year}}</span>
+                    <span ng-click="nextMonth()"><i class="icon-angle-right"></i></span>
+                </div>
+                <div id="calendarContent">
+                    <div class="row">
+                        <div class="day">Sun</div>
+                        <div class="day">Mon</div>
+                        <div class="day">Tue</div>
+                        <div class="day">Wed</div>
+                        <div class="day">Thu</div>
+                        <div class="day">Fri</div>
+                        <div class="day">Sat</div>
+                    </div>
+                    <div class="row" ng-repeat="row in calendarDays">
+                        <div class="day" ng-click="nextSlide('slide2','slide3');selectDay(day) " ng-class="{'currentday':day.currentDay, 'notMonthDays':!day.monthDay, 'mouseOver':hover}" ng-repeat="day in row" ng-mouseenter="hover = true"
+     ng-mouseleave="hover = false"><span>{{day.day}}</span></div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    <div id="slide3">
+        <div id="header">
+            <div id="goBack" ng-click="nextSlide('slide3','slide2')">
+                <i class="icon-angle-left"></i>
+                <span>Calendar</span>
+            </div>
+        </div>
+        <div id="daySchedule">
+                <div id="header">
+                    <span ng-click="prevDay()"><i class="icon-angle-left"></i></span>
+                    <span>{{selectedDay}} {{monthNames[month]}} {{year}}</span>
+                    <span ng-click="nextDay()"><i class="icon-angle-right"></i></span>
+                </div>
+                <div id="schedule">
+                    <div class="row">
+                        <div class="hour"> </div>
+                        <div class="room" ng-repeat="room in rooms">{{room.NOMESALA}}</div>
+                    </div>
+                    
+                    <div id="rowscontent">
+                        <div ng-show="events.length == 0">Loading...</div>
+                        <div class="row" ng-repeat="eventRow in events ">
+                            
+                            <div class="hour" ng-repeat="eventColumn in events[$index] | limitTo: (1) track by $index">{{eventColumn.HORAINICIO}} - {{eventColumn.HORAFIM}}</div>
+                            <div class="event"  ng-style="{'width': 'calc((100% - 105px) / '+$scope.rooms.length+')'}" ng-class="{'empty':eventColumn.length==0}" ng-repeat="eventColumn in events[$index] | limitTo: (1-events[$index].length) track by $index">
+                                <span ng-click="confirm(rooms[$index].IDSALA,eventRow[0].IDHORA,$parent.$index,$index)" ng-class="{'exam':eventColumn[0].TIPO=='exam', 'class':eventColumn[0].TIPO=='class'}">
+                                    {{eventColumn[0].NOME}}
+                                    <span>
+                                        {{eventColumn[0].TIPO}}
+                                    </span>
+                                </span>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+    </div>
+</div>
+<div id="menuDark">
+    
+    
+    <div id="examPopup">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        <div id="popupcontent">
+            <label>Are you sure you want to schedule the exam with the following description?</label><br>
+            <label>Course</label>
+            <span>{{selectedCourse.NOME}}</span>
+            <label>Date</label>
+            <span>{{year}} - {{month+1}} - {{selectedDay}}</span>
+            <label>Hour</label>
+            <span>{{selectedHour.HORAINICIO}} - {{selectedHour.HORAFIM}}</span>
+            <label>Room</label>
+            <span>{{selectedRoom.NOMESALA}}</span>
+            <div id="buttons">
+                <button ng-click="popuphide()">Cancel</button>
+                <button ng-click="insertExam(rooms[$index].IDSALA,eventRow[0].IDHORA,$parent.$index,$index)">Confirm</button>    
+            </div>
+        </div>
+    </div>
+    
+    <div class="sucess" id="createsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The exam was sucessfully scheduled!</span>
+        </div>
+    </div>
+    
+    <div class="sucess" id="editsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully updated!</span>
+        </div>
+    </div>
+    
+    <div class="failure" id="createfail">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-error"></i>
+            <span>Ups!</span>
+            <span>There are some technical problem!</span>
+        </div>
+    </div>
+    
+    
+</div>

@@ -1,0 +1,31 @@
+<link href="/client/Users/programs/programs/programs_css.css" type="text/css" rel="stylesheet">
+
+<div id="menu"> 
+    <div id="navigationBar">
+        <div ng-click="underline($index);" class="degreeOption">Bachelor</div>
+        <div ng-click="underline($index);" class="degreeOption">Postgraduate</div>
+        <div ng-click="underline($index);" class="degreeOption">Master</div>
+        <div ng-click="underline($index);" class="degreeOption">Doctoral</div>
+        <hr />      
+    </div>
+    
+    <div id="programs">
+        <div ng-click="selectProgram(program)" class="program" ng-repeat="program in programs = (programsList | filter:typeFilter)">
+            <label>{{program.NOME}}</label>
+            <label>{{program.PROFNAME}}</label>
+            <label>Program Responsible</label>
+        </div>
+        <div id="warning" ng-hide="programs.length!=0">
+            <i class="icon-error"></i>
+            <span>There are no programs</span>
+            <span>from this type!</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

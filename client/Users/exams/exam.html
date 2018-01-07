@@ -1,0 +1,29 @@
+<link href="/client/Users/exams/exam_css.css" type="text/css" rel="stylesheet">
+<div id="topBar">
+    <a ui-sref="user.exams">
+        <div class="tab">
+            <span>Exams</span>
+        </div>
+    </a>
+</div>
+<div style="display:'block'" id="menu" >
+    
+    <div id="examsList"> 
+        <div id="head">
+            <div id="searchBar">
+                <div id="icon"><span><i class="icon-search"></i></span></div>
+                <input type="text" ng-model="searchFilter">
+            </div>
+        </div>
+        <div id="header">
+            <span>Cadeira</span>
+            <span>Data</span>
+        </div>
+        <div id="rows">
+            <div class="examRow" ng-repeat="exam in examList | filter:searchFilter">
+                <span>{{cadeira}}</span>
+                <span>{{exam.data}}</span>
+            </div>
+        </div>
+    </div>
+</div>

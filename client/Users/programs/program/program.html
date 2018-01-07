@@ -1,0 +1,266 @@
+<link href="/client/Users/programs/program/program_css.css" type="text/css" rel="stylesheet">
+<div id="menu" class="programTab">
+        <div id="header">
+            <img ng-src="{{sourceresp}}">
+            <label id="courseName">{{selectedProgram.NOME}}</label>
+            <label id="teacher">{{selectedProgram.respname}}</label>
+            <div id="buttons">
+                <div id="button" ng-click="changeButton(program)"style="cursor:pointer">
+                    <div id="icon"><span><i class="icon-edit-modify-streamline"></i></span></div>
+                    <label style="cursor:pointer">{{editdone}}</label>
+                </div>
+                <div id="button" ng-click="confirmationShow('deletepopup')" style="cursor:pointer">
+                    <div id="icon"><span><i class="icon-delete-garbage-streamline"></i></span></div>
+                    <label style="cursor:pointer">Delete</label>
+                </div>
+            </div>
+        </div>
+        <div class="content" >
+            
+            <div id="slideselector">
+                <i class="icon-angle-left" ng-click="slidechange(!slide)"></i>
+                <span>{{slidename}}</span>
+                <i class="icon-angle-right" ng-click="slidechange(!slide)"></i>
+            </div>
+            <div class="slide" ng-show="slide">
+                <div id="left">
+                    <form>
+                        
+                        <div class="formrow">
+                        <label>Program Type</label>
+                            <select ng-show="editmode" ng-model="program.cursotipo">
+                                <option value="bachelor degree">Bachelor</option>
+                                <option value="postgraduate degree">Postgraduate</option>
+                                <option value="master degree">Master</option>
+                                <option value="doctoral degree">Doctoral</option>
+                            </select>
+                            <input readonly ng-show="!editmode" value="{{typeLabel}}" type="text">
+                        </div>
+                        <div class="formrow">
+                            <label>Program's Name</label>
+                            <input ng-readonly="!editmode" ng-model="program.nome" type="text">
+                        </div>
+                        <div class="formrow">
+                        <label>Program Responsible</label>
+                            <select ng-show="editmode" ng-model="program.responsible"  ng-options="teacher.IDPROFESSOR as teacher.name for teacher in teacherList">
+                            </select>
+                            <input readonly ng-show="!editmode" value="{{program.respname}}" type="text">
+                        </div>
+                        <div class="formrow">
+                            <div class="formPart">
+                                <label>Variable Y</label>
+                                <input ng-readonly="!editmode" ng-model="program.vary" ng-change="calculateCredits()" type="number" >
+                            </div>
+                            <div class="formPart">
+                                <label>Program's Duration</label>
+                                <input ng-readonly="!editmode" ng-model="program.duration" ng-change="resetModel(program.duration);loadSemesterTabs();" type="number" >
+                            </div>
+                            <div class="formPart">
+                                <label>Hours p/ Semester</label>
+                                <input ng-readonly="!editmode" ng-model="program.hours" type="number">
+                            </div>
+                        </div>
+                        <div class="formrow">
+                            <div id="enrolledStudents">
+                            <div>
+                                <label>{{enrolledStudents}} Students</label>
+                                <label>currently enrroled</label>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="right">
+                    <div id="plan">
+                        <div id="courses" ng-hide="!editmode" >
+                            <div id="header">Available Courses</div>
+                            <div id="coursesRows">
+                                <ul dnd-list="models.lists[models.lists.length-1]" dnd-drop="callback({targetList: models.lists[models.lists.length-1], targetIndex: index, listname: 'qua'})" dnd-list="models.lists[models.lists.length-1]">
+                                    <li ng-repeat="item in models.lists[models.lists.length-1]"
+                                        dnd-callback="onDrop(models.lists[models.lists.length-1], $index, targetList, targetIndex,listname)"
+                                        dnd-draggable="item"
+                                        dnd-effect-allowed="move"
+                                        dnd-selected="models.selected = item"
+                                        ng-class="{'selected': models.selected === item}"
+                                        class="hover"
+                                        >
+                                        {{item.label}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="cadeirasselecionadas">
+                            <div id="header">Study Plan</div>
+                            <div id="semesters">
+                                <div id="semester" ng-repeat="list in models.lists | limitTo:(models.lists.length-1) track by $index">
+                                <label id="quauq" ng-hide="$index%2!=0">Year {{Math.round(($index+1)/2)}} - Fall</label>
+                                <label id="quauq" ng-hide="$index%2==0">Year {{Math.round(($index+1)/2)}} - Spring</label>
+                                <ul dnd-drop="callback({targetList: list, targetIndex: index, listname: 'qua'})" dnd-list="list">
+                                    <li ng-repeat="item in list"
+                                        dnd-callback="onDrop(list, $index, targetList, targetIndex,listname)"
+                                        dnd-draggable="item"
+                                        dnd-effect-allowed="move"
+                                        dnd-selected="models.selected = item"
+                                        ng-class="{'selected': models.selected === item, 'fundamental': list[$index].fundamental,'hover':editmode}"
+                                        ng-click="toogleFundamental($index,list)"
+                                        >
+                                        {{item.label}}<span ng-hide="!item.fundamental">&nbsp (F)</span> 
+                                        <i ng-hide="!editmode" ng-click="removeItem($index,list)" class="icon-cross"></i>
+                                        <label ng-hide="program.vary==0 ||program.vary==undefined">{{item.creditos}} ECT</label>
+
+                                    </li>
+                                    <li class="credits" ng-hide="list.length==0 || program.vary==0 || program.vary==undefined"><label><b>Total of Credits:</b>&nbsp{{countCredits[$index]}}&nbsp ECT</label></li>
+                                    <label ng-hide="list.length!=0">Drop here some courses!</label>
+                                </ul>
+
+                            </div>
+                            <div id="warning" ng-hide="models.lists.length>1">
+                                <i class="icon-error"></i>
+                                <span>There is no course plan defined!</span>
+                            </div>
+
+                            </div>
+
+
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="slide" ng-show="!slide">
+                <div id="boxContainer">    
+                    <div id="semesterOptions">
+                        <div class="semester" ng-repeat="semester in semesterTabs track by $index" ng-click="toogleSelectedTab(semester);selectSemester($index);" ng-class="{'selectedTab':semester.selected}">
+                            <label id="quauq">Year {{semester.ano}} - {{semester.semestre}}</label>
+                        </div>
+                    </div>
+                    <div id="schedule">
+                        <div id="scheduleHead">
+                            <div class="column"></div>
+                            <div class="column">
+                                <label>Mon</label>
+                            </div>
+                            <div class="column">
+                                <label>Tue</label>
+                            </div>
+                            <div class="column">
+                                <label>Wed</label>
+                            </div>
+                            <div class="column">
+                                <label>Thr</label>
+                            </div>
+                            <div class="column">
+                                <label>Fri</label>
+                            </div>
+                        </div>
+                        <div id="rows" >
+                            <div class="row" ng-repeat="hours in hoursList">
+                                <div class="column" >
+                                    <label>{{hours.HORAINICIO}} - {{hours.HORAFIM}}</label>
+                                </div>
+                                <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][0]!=0" class="column" id="classes"  ng-click="!editmode ||showPopUp(1,hours,classMatrix[hours.IDHORA-1][0].cadeira)" ng-class="{'editable':editmode}">
+                                    <label>{{classMatrix[filterIndex][hours.IDHORA-1][0].cadeira.NOME}}</label>
+                                </div>
+                                <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][0]==0" class="column" id="classes" ng-click="!editmode ||showPopUp(1,hours)" ng-class="{'editable':editmode}">
+                                    <label></label>
+                                </div>
+                                 <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][1]!=0" class="column" id="classes"  ng-click="!editmode ||showPopUp(2,hours,classMatrix[hours.IDHORA-1][1].cadeira)" ng-class="{'editable':editmode}">
+                                    <label>{{classMatrix[filterIndex][hours.IDHORA-1][1].cadeira.NOME}}</label>
+                                </div>
+                                <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][1]==0" class="column" id="classes" ng-click="!editmode ||showPopUp(2,hours)" ng-class="{'editable':editmode}">
+                                    <label></label>
+                                </div>
+                                 <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][2]!=0" class="column" id="classes"  ng-click="!editmode ||showPopUp(3,hours,classMatrix[hours.IDHORA-1][2].cadeira)" ng-class="{'editable':editmode}">
+                                    <label>{{classMatrix[filterIndex][hours.IDHORA-1][2].cadeira.NOME}}</label>
+                                </div>
+                                <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][2]==0" class="column" id="classes" ng-click="!editmode ||showPopUp(3,hours)" ng-class="{'editable':editmode}">
+                                    <label></label>
+                                </div>
+                                 <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][3]!=0" class="column" id="classes"  ng-click="!editmode ||showPopUp(4,hours,classMatrix[hours.IDHORA-1][3].cadeira)" ng-class="{'editable':editmode}">
+                                    <label>{{classMatrix[filterIndex][hours.IDHORA-1][3].cadeira.NOME}}</label>
+                                </div>
+                                <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][3]==0" class="column" id="classes" ng-click="!editmode ||showPopUp(4,hours)" ng-class="{'editable':editmode}">
+                                    <label></label>
+                                </div>
+                                 <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][4]!=0" class="column" id="classes"  ng-click="!editmode ||showPopUp(5,hours,classMatrix[hours.IDHORA-1][4].cadeira)" ng-class="{'editable':editmode}">
+                                    <label>{{classMatrix[filterIndex][hours.IDHORA-1][4].cadeira.NOME}}</label>
+                                </div>
+                                <div ng-show="classMatrix[filterIndex][hours.IDHORA-1][4]==0" class="column" id="classes" ng-click="!editmode ||showPopUp(5,hours)" ng-class="{'editable':editmode}">
+                                    <label></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="menuDark">
+    <div class="confirm" id="deletepopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to delete {{selectedProgram.NOME}}?</label>
+        <div id="actionButtons">           
+            <button ng-click="deleteProgram()">Confirm</button>
+            <button ng-click="popupHide()">Cancel</button>
+        </div>
+    </div>
+    
+    <div class="confirm" id="editpopup">
+        <div id="topbar"></div>
+        <label>Are you sure you want to update {{selectedProgram.NOME}}?</label>
+        <div id="actionButtons">           
+            <button ng-click="applyChanges(program)">Confirm</button>
+            <button ng-click="popupHide();recoverData()">Cancel</button>
+        </div>
+    </div>
+    
+    <div class="sucess" id="deletesucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully deleted!</span>
+        </div>
+    </div>
+    
+    <div class="sucess" id="editsucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <span>The program was sucessfully updated!</span>
+        </div>
+    </div>
+    
+    <div class="failure">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-error"></i>
+            <span>Ups!</span>
+            <span>There are some technical problem!</span>
+        </div>
+    </div>
+    
+    
+    <div id="examPopup">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        <div id="popupcontent">
+            <label>Course</label>
+            <select ng-model="event.course" ng-options="course.id as course.label for course in selectedSemester">
+            </select>
+            <label>Room</label>
+            <select ng-model="event.room" ng-options="room.IDSALA as room.NOMESALA for room in roomList">
+            </select>
+            <label>Week Day</label>
+            <span>{{weekday}}</span>
+            <label>Hour</label>
+            <span>{{hoursList[event.hour-1].HORAINICIO}} - {{hoursList[event.hour-1].HORAFIM}}</span>
+            <div id="buttons">
+                <button ng-click="popuphide()">Cancel</button>
+                <button ng-click="createClass(event)">Submit</button>    
+            </div>
+        </div>
+    </div>
+    
+    
+</div>

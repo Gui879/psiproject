@@ -1,0 +1,561 @@
+#menu{
+    display: block;
+    overflow: auto;
+}
+.courseTab>#header{
+    width: 100%;
+    height: 130px;
+    display: inline-block;
+    border-bottom: 10px solid rgba(92,102,108,1);
+}
+.courseTab #header img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.courseTab #header label{
+    position: relative;
+    float: left;
+    font-weight: bold;
+    margin-left: 200px;
+    display: inline-block;
+    width: calc(100% - 200px);
+    text-align: left;
+}
+
+.courseTab #header input{
+    position: relative;
+    float: left;
+    font-weight: bold;
+    margin-left: 200px;
+    display: inline-block;
+    width: 450px;
+    text-align: left;
+    border: 0;
+    background-color: rgba(92,102,108,0.3);
+    margin-top:50px;
+    font-size:25px;
+    font-family:'Quicksand';
+}
+
+.courseTab #header input{
+    position: relative;
+    float: left;
+    font-weight: bold;
+    margin-left: 200px;
+    display: inline-block;
+    width: 450px;
+    text-align: left;
+    border: 0;
+    background-color: rgba(92,102,108,0.3);
+    margin-top:50px;
+    font-size:25px;
+    font-family:'Quicksand';
+}
+
+.courseTab #header select{
+    position: absolute;
+    float: left;
+    font-weight: bold;
+    left: 200px;
+    display: block;
+    width: 450px;
+    text-align: left;
+    border: 0;
+    background-color: rgba(92,102,108,0.3);
+    font-size:15px;
+    font-family:'Quicksand';
+    margin-top:90px;
+}
+
+.tab{
+    width:auto;
+    padding:1px;
+    cursor:pointer;
+    max-width:450px;
+    
+}
+#header label:nth-child(2){
+    margin-top: 50px;
+    font-size: 25px;
+}
+#header label:nth-child(3){
+    font-size: 15px;
+}
+.courseTab #buttons{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.courseTab #button{
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding: 6px;
+    font-size: 15px;
+    border-radius: 20px;
+    text-align: left;
+    cursor:pointer;
+}
+.courseTab #button:hover{
+    color:white;
+    background-color:rgba(92,102,108,1);
+}
+.courseTab #button #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+.courseTab #button #icon{
+    font-size: 10px;
+}
+#button label{
+    font-size: 15px !important;
+    line-height: 25px;
+    top: -1;
+    padding-right: 5px;
+    margin: 0 !important;
+    width: auto !important;
+    float: none !important;
+    font-weight: normal !important;
+    cursor:pointer;
+}
+.courseContent{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    clear: both;
+    height: calc(100% - 265px);
+}
+#students{
+    width: 80%;
+    margin: 0 auto;
+    
+    
+}
+#students #header{
+    border-bottom: 10px solid #5C666C;
+    display: block;
+    width: 100%;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    min-height: 28px;
+    position: static;
+}
+#students #rows{
+    max-height: calc(100% - 98px);
+    overflow-y: auto;
+}
+#students #header span{
+    color: black;
+    display: block;
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+#students #header span:nth-child(1){
+    width: 10%;
+    min-width: 100px;
+}
+#students #header span:nth-child(2){
+    width: 50%;
+}
+#students #header span:nth-child(3){
+    max-width: calc(40% - 100px);
+}
+
+#students #studentRow span{
+    color: black;
+    display: block;
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+#students #studentRow span:nth-child(1){
+    width: 10%;
+    min-width: 100px;
+}
+#students #studentRow span:nth-child(2){
+    width: 50%;
+}
+#students #studentRow span:nth-child(3){
+    max-width: calc(40% - 100px);
+}
+
+#rows .studentRow{
+    padding-left: 10px;
+    overflow: hidden;
+    line-height: 40px;
+    width: calc(100% - 10px);
+}
+
+#rows .studentRow:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+#searchBar{
+    margin-bottom: 10px;
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 20px;
+}
+#searchBar #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+#searchBar input{
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 150px;
+    font-family: 'Quicksand';
+}
+input:focus {
+    outline-width: 0;
+}
+#head{
+    width: 100%;
+    text-align: right;
+    margin: 0 auto;
+    height: 50px;
+}
+#schedule{
+    width: 80%;
+    margin: 0 auto;
+    max-height: 100%;
+}
+#schedule #scheduleHead{
+    width: 100%;
+    clear: both;
+    height: 30px;
+    border-bottom: 10px solid rgba(92,102,108,1);
+    font-weight: bold;
+}
+#schedule #scheduleHead>.column{
+    width: 16.6%;
+    height: 100%;
+    position: relative;
+    float: left;
+    display: inline-block;
+    direction: block;
+}
+.column label{
+    text-align: center;
+}
+#schedule #rows{
+    max-height: calc(100% - 98px);
+    overflow-y: auto;
+}
+#schedule #rows>.row{
+    clear: both;
+    height: 50px;
+}
+#schedule #rows .row:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+.row>.column{
+    width: 16.666%;
+    height: 100%;
+    position: relative;
+    float: left;
+    display: inline-block;
+}
+#navigationBar{
+    width: 100%;
+    margin-top: 50px;
+    clear: both;
+    font-size: 30px;
+}
+#navigationBar .icon-angle-left{
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+#navigationBar .icon-angle-right{
+    display: inline-block;
+    position: relative;
+    float: right;
+}
+.haveClass{
+    background-color: aqua;
+}
+.enable:hover{
+    background-color: darkcyan;
+}
+
+#menuDark{
+    width: 100%;
+    height: calc(100% - 55px);
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-timing-function: ease-in-out;
+    transition: 3s;
+    display: none;
+}
+
+#menuDark #examPopup{
+    display:none;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 400px;
+    height: 450px;
+}
+
+#menuDark #confirmationPopup{
+    display:none;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 250px;
+    height: 180px;
+    text-align:center;
+}
+
+#menuDark #confirmationPopup span{
+   margin-top:10px;
+    background-color:white;
+}
+
+#menuDark #confirmationPopup #buttons{
+    margin-top: 15px;
+    height: 30px;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+#menuDark #confirmationPopup #buttons button{
+    background-color: rgba(92,102,108,0.3);
+    height: 30px;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    float: none;
+    display: inline-block;
+    cursor:pointer;
+}
+
+
+#menuDark #examPopup #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 40px;
+}
+
+#menuDark #confirmationPopup #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 15px;
+}
+#menuDark #examPopup #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 7.5px;
+    color: white;
+    padding: 5px;
+}
+#menuDark #examPopup #topbar #cross i{
+    font-size: 15px;
+    margin: 0;
+}
+#menuDark #examPopup #topbar #cross:hover{
+    background-color: rgba(92,102,108,0.5);
+}
+#menuDark #examPopup #popupcontent{
+    display: block;
+    margin: 30px;
+    
+}
+#popupcontent label{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+#popupcontent>span{
+    display: block;
+    width: calc(100% - 10px);
+    text-align: center;
+    font-size: 15px;
+}
+#popupcontent>span:nth-child(2){
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#popupcontent>span:nth-child(3){
+    font-size: 20px;
+}#menuDark .confirm label{
+    display: block;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}
+#menuDark #actionButtons{
+    clear: both;
+    overflow: hidden;
+    margin: 30px;
+}
+#menuDark #actionButtons button{
+    height: 50px !important;
+    margin: 10px !important;
+    margin-top: 40px;
+    width: calc(50% - 20px) !important;
+    background-color: rgba(92,102,108,0.3) !important;
+    border-radius: 0px;
+    text-align: center;
+}
+#menuDark #actionButtons button:nth-child(1){
+    margin-right: 10px;
+}
+#menuDark #actionButtons button:nth-child(2){
+    margin-left: 10px;
+}
+#menuDark #actionButtons button:hover{
+    background-color: rgba(92,102,108,0.7) !important;
+}
+#menuDark .confirm{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    animation: appear 0.5s 1;
+}
+#menuDark .confirm{
+    width: 300px;
+    height: auto;
+}
+#menuDark .confirm #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 40px;
+}
+#menuDark .confirm #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 7.5px;
+    color: white;
+    padding: 5px;
+}
+#menuDark .confirm #topbar #cross:hover{
+    background-color: rgba(92,102,108,0.5);
+}
+#menuDark .sucess,#menuDark .failure{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: auto;
+}
+
+#menuDark .sucess #topbar,#menuDark .failure #topbar{
+    background-color: rgba(92,102,108,0.7);
+    text-align: right;
+    font-size: 15px;
+    height: 40px;
+}
+#menuDark .sucess #topbar #cross,#menuDark .failure #topbar #cross{
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 12.5px;
+    color: white;
+}
+#menuDark .sucess #cross,#menuDark .failure #topbar #cross{
+    cursor:pointer;
+}
+#menuDark .sucess #popupcontent,#menuDark .failure #popupcontent{
+    height: calc(100% - 105px);
+    width: calc(100% - 60px);
+    margin: 30px;
+    overflow-y: auto;
+}
+#menuDark .sucess #popupcontent>span:nth-child(2){
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#menuDark .sucess #popupcontent>span:nth-child(3){
+    font-size: 20px;
+    font-weight: normal;
+}
+#menuDark .sucess #popupcontent>i,#menuDark .failure #popupcontent>i{
+    display: block;
+    margin: 0 auto;
+    width: 100;
+    text-align: center;
+    font-size: 100px;
+}
+#rows>#warning{
+    display: inline-block;
+    position: relative;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    animation: appear 0.5s 1;
+    margin-top:120px;
+}
+#rows>#warning>i{
+    font-size: 110px;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    color: rgba(92,102,108,1);
+    animation: alert 5s infinite;
+}
+#rows>#warning>span{
+    font-size: 20px;
+    color: rgba(92,102,108,1);
+    display: block;
+}

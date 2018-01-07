@@ -1,0 +1,110 @@
+
+<div id="lateralMenu">
+    <div id="perfil">
+        
+        <img id="profilePicture" ng-src="{{source}}">
+        <label>{{username}}</label>
+        <i class=""></i>
+    </div>
+    <div id="options">
+        <div class="option" id="ahome"ng-show="useradmin" ng-click="changeState('user.admin','ahome')">
+            <div class="logo">
+                <i class="icon-home"></i>
+            </div>
+            <label>HOME</label>
+        </div>
+        <div class="option" id="thome" ng-show="!useradmin" ng-click="changeState('user.teacher','thome')">
+            <div class="logo">
+                <i class="icon-home"></i>
+            </div>
+            <label>HOME</label>
+        </div>
+        <div class="option" id="users" ng-show="useradmin" ng-click="changeState('user.users','users')">
+            <div class="logo">
+                <i class="icon-users"></i>
+            </div>
+            <label>USERS</label>
+        </div>
+        <div class="option" id="programs" ng-show="useradmin" ng-click="changeState('user.programs.list','programs')">
+            <div class="logo">
+                <i class="icon-course"></i>
+            </div>
+            <label>PROGRAMS</label>
+        </div>
+        <div class="option" id ="acourses" ng-show="useradmin" ng-click="changeState('user.courses.list','acourses')">
+            <div class="logo">
+                <i class="icon-class"></i>
+            </div>
+            <label>CURRICULAR UNITS</label>
+        </div>
+        <div class="option" id="tcourses" ng-show="!useradmin" ng-click="changeState('user.teachercourses.list','tcourses')">
+            <div class="logo">
+                <i class="icon-class"></i>
+            </div>
+            <label>CURRICULAR UNITS</label>
+        </div>
+        
+        <div class="option" id="bookedRooms" ng-show="useradmin" ng-click="changeState('user.bookedRooms','bookedRooms')">
+            <div class="logo">
+                <i class="icon-classroom"></i>
+            </div>
+            <label>BOOKED ROOMS</label>
+        </div>
+        <div class="option" id="aexams" ng-show="useradmin" ng-click="changeState('user.aexams','aexams')">
+            <div class="logo">
+                <i class="icon-exam"></i>
+            </div>
+            <label>EXAMS</label>
+        </div>
+        <div class="option" id="exams" ng-show="!useradmin" ng-click="changeState('user.exams','exams')">
+            <div class="logo">
+                <i class="icon-exam"></i>
+            </div>
+            <label>EXAMS</label>
+        </div>
+        <div class="option" id="evaluations" ng-show="!useradmin" ng-click="changeState('user.evaluation','evaluations')">
+            <div class="logo">
+                <i class="icon-exam"></i>
+            </div>
+            <label>EVALUATIONS</label>
+        </div>
+        <div class="option" id="students" ng-show="useradmin" ng-click="changeState('user.students','students')">
+            <div class="logo">
+                <i class="icon-students"></i>
+            </div>
+            <label>STUDENTS</label>
+        </div>
+        <div class="option" id="settings" ng-click="changeState('user.settings','settings')">
+            <div class="logo">
+                <i class="icon-setting"></i>
+            </div>
+            <label>SETTINGS</label>
+        </div>
+    </div>
+    <a ng-click="logout()" class="logout"><div id="logout">Terminar Sessão</div></a></div>
+
+    <div id="notifIcon" ng-class="{'enfase':newNotifications.length!=0}">
+        <label ng-class="{'hide':newNotifications.length==0}">{{newNotifications.length}}</label>
+        <i class="icon-notification"></i>
+    </div>
+    <div id="notWindow">
+        <div id="triangle"></div>
+        <div id="notContent">
+            <div class="notification" ng-class="{'notReaded':notification.DATAVISITADO==null}" ng-repeat="notification in newNotifications | orderBy:'$index':true">
+                <div id="notIcon"><i class="icon-{{notification.TIPO}}"></i></div>
+                <label>{{notification.MENSAGEM}}</label>
+                <label>{{notification.DATA}}   {{notification.HORA}}</label>
+            </div>
+            <div class="notification" ng-class="{'notReaded':notification.DATAVISITADO==null}" ng-repeat="notification in notifications">
+                <div id="notIcon"><i class="icon-{{notification.TIPO}}"></i></div>
+                <label>{{notification.MENSAGEM}}</label>
+                <label>{{notification.DATA}}   {{notification.HORA}}</label>
+            </div>
+            <div id="warning" ng-hide="!(notifications.length==0 && newNotifications.length==0)">
+                <i class="icon-error"></i>
+                <span>There are no notifications!</span>
+            </div>
+        </div>
+    </div>
+<div id="content" ui-view></div>
+

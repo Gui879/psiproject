@@ -1,0 +1,115 @@
+#daySchedule{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+#daySchedule #header{
+    width: 100%;
+    background-color: rgba(92,102,108,0.3);
+    clear: both;
+    overflow: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+#daySchedule #header span:nth-child(1){
+    width: 40px;
+    position: relative;
+    float: left;
+}
+#daySchedule #header span:nth-child(2){
+    width: calc(100% - 80px);
+    position: relative;
+    float: left;
+}
+#daySchedule #header span:nth-child(3){
+    width: 40px;
+    position: relative;
+    float: right;
+}
+#daySchedule #schedule .row{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    height: 45px;
+}
+#daySchedule #schedule>.row{
+    background-color: rgba(92,102,108,0.5); 
+}
+.row>.room,#schedule>.row>.hour{
+    background-color: transparent;
+}
+#daySchedule #schedule #rowscontent{
+    position: static;
+    max-height: calc(100% - 120px);
+    overflow-y: auto;
+    border: 1px solid rgba(92,102,108,0.5); 
+}
+#daySchedule #schedule #rowscontent .row{
+    height: 90px;
+} 
+#daySchedule #schedule .hour{
+    display: block;
+    width: 75px;
+    max-width: 100px;
+    position: relative;
+    float: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    overflow: hidden;
+}
+#daySchedule #schedule .row .room,#daySchedule #schedule .row .event{
+    display: block;
+    width: calc((100% - 75px) / 11);
+    position: relative;
+    float: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    overflow: hidden;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+}
+#daySchedule #schedule .row .room{
+    width: calc((100% - 70px) / 11);
+}
+
+#daySchedule #schedule .row .hour{
+    background-color: rgba(92,102,108,0.5); 
+}
+#daySchedule #schedule .row .event{
+    font-size: 10px;
+    text-align: left;
+    border: 1px solid rgba(92,102,108,0.5); 
+    padding-top: 0;
+}
+
+#daySchedule #schedule .row .empty:hover span{
+    background-color: gray;
+}
+
+#daySchedule #schedule .row .event>span{
+    display: block;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    margin: 5px;
+    padding: 5px;
+    position: relative;
+}
+#daySchedule #schedule .row .event span>span{
+    display: block;
+    width: auto;
+    text-align: right;
+    padding-top: 10px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+#daySchedule #schedule .row .event>.exam{
+    background-color: rgba(255,0,0,0.5);
+}
+#daySchedule #schedule .row .event>.class{
+    background-color: rgba(96,198,208,0.4);
+}

@@ -1,0 +1,124 @@
+#menu{
+    display: block;
+}
+#head{
+    width: 100%;
+    text-align: right;
+    margin: 0 auto;
+    height: 70px;
+}
+#menu>#examsList{
+    width: 70%;
+    height: 80%;
+    margin:0 auto;
+    margin-top: 20px;
+    min-width: 600px;
+}
+
+#header{
+    border-bottom: 10px solid #5C666C;
+    display: block;
+    width: 100%;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    height: auto;
+    min-height: 28px;
+    position: static;
+}
+#rows{
+    max-height: -webkit-calc(100% - 38px);
+    max-height: calc(100% - 38px);
+    overflow-y: auto;
+}
+#examsList span, #approvedCourses span {
+    color: black;
+    display: block;
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: left;
+}
+.examRow, .row{
+    padding-left: 10px;
+    overflow: hidden;
+    line-height: 40px;
+    width: -webkit-calc(100% - 10px);
+    width: calc(100% - 10px);
+}
+
+#rows .examRow:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+#rows .row:nth-child(odd){
+    background-color: rgba(92,102,108,0.3);
+}
+
+
+#searchBar{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    background-color: rgba(92,102,108,0.3);
+    width:auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    /*border-left: 5px solid rgb(96,198,208);*/
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 20px;
+
+    text-align: right;
+}
+#searchBar #icon{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+#searchBar input{
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 250px;
+    font-family: 'Quicksand';
+}
+input:focus {
+    outline-width: 0;
+}
+#navigationBar{
+    width: 100%;
+    margin-top: 20px;
+    clear: both;
+    font-size: 30px;
+}
+#navigationBar .icon-angle-left{
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+#navigationBar .icon-angle-right{
+    display: inline-block;
+    position: relative;
+    float: right;
+}
+#warning{
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+}
+#warning>i{
+    font-size: 200px;
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+    animation: alert 5s infinite;
+}
+#warning>span{
+    font-size: 40px;
+    display: block;
+}

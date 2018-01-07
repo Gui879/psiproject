@@ -1,0 +1,58 @@
+<link href="/client/Users/courses/courses/courses_css.css" type="text/css" rel="stylesheet">
+
+<div id="menu" >
+
+    <div id="searchBar">
+        <div id="icon"><span><i class="icon-search"></i></span></div>
+        <input type="text" ng-model="searchFilter">
+    </div>
+    
+    <div id="courses">
+        <div id="warning" ng-hide="coursesList.length!=0">
+            <i class="icon-error"></i>
+            <span>There are no courses!</span>
+        </div>
+        <div class="course" ng-repeat="course in coursesList | filter:searchFilter" ng-click="checkTab(course)" >
+            <label>{{course.NAME}}</label>
+            <label>{{course.TEACHER}}</label>
+            <label ng-class="{'hide':course.TEACHER!=' '}">No teacher available!</label>
+            <label ng-class="{'hide':course.TEACHER==' '}">Teacher</label>
+        </div>
+        
+    </div>
+    <div id="addButon" ng-click="popupshow()">
+        <div id="icon"><span><i class="icon-add"></i></span></div>
+        <label>Add New Course</label>
+    </div>
+</div>
+<div id="menuDark">
+    <div id="addCourse">
+        <div id="topbar"><div id="cross" ng-click="popuphide()"><i class="icon-cross"></i></div></div>
+        
+        <div id="popupcontent">
+            <div id="contentContent">
+                <form>
+                <div id="inputs">
+                    <label>Course Name</label>
+                    <input id="courseName" type="text" ng-model="course.name" required>
+                    <label>Teacher</label>
+                    <select id="teacherId" required ng-model="course.teacherid" ng-change="getTeacherName();setImg()">
+                        <option value={{teacher.IDPROFESSOR}} ng-repeat="teacher in teachersList">{{teacher.NAME}}</option>
+                    </select>
+                    <div class="teacherOption">
+                        <img ng-src="{{teacherimg}}">
+                    </div>
+                    <label>Teaching Hours</label>
+                    <div id="teachHours">
+                        <input id="courseTime" ng-model="course.time" type="number" placeholder="Hours for all the semester" required>
+                    </div>
+                    <div id="buttons">
+                        <div class="button" ng-click="popuphide()">Cancel</div>
+                        <div class="button" ng-click="createCourse(course)">Confirm</div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

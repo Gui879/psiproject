@@ -1,0 +1,99 @@
+
+<link href="/client/Users/students/createStudent_css.css" type="text/css" rel="stylesheet">
+
+<div id="topBar">
+    <a ui-sref="user.students">
+        <div class="tab">
+            <span>Student's List</span>
+        </div>
+    </a>
+    <a ui-sref="user.createStudent">
+        <div class="tab">
+            <span>New Student</span>
+        </div>
+    </a>
+</div>
+<div id="menu" >
+    <form>
+        <div id="left">
+            <div id="imgClass">
+                <img id="foto" style="width:100px;" alt="Click me to change the photo!" ngf-thumbnail="file || '/client/profilepics/default.png'"/>
+                <div id="overlay">Edit Me!</div>
+            </div>
+            <input
+                style="display: none"
+               type="file" 
+               ngf-select 
+               ng-model="file" 
+               name="file" 
+               ngf-pattern="'image/*'"
+               accept="image/*" 
+               ngf-max-size="20MB" 
+                id="uploadFoto"
+               />  
+        </div>
+        <div id="right">
+            <div id="left">
+                <span>First Name</span>
+                <input required ng-model="user.firstname" type="text">
+                <span>Last Name</span>
+                <input required ng-model="user.lastname" type="text">
+                
+            </div>
+            <div id="right">
+                <span>Phone Number</span>
+                <input required ng-model="user.phoneNumber" type="number">
+                <span>Email</span>
+                <input required ng-model="user.email" type="email">
+            </div>
+        </div>
+        <div id="footer1">
+            <span>Programs</span>
+            
+            <select required ng-model="selectedCurso" ng-change="listCadeiras()">
+                <option value={{curso.ID_CURSO}} ng-repeat="curso in cursoList">{{curso.NOME}}</option>
+            </select>
+            
+            <div id="courseOption">
+                <div id="header">
+                    <span>Course Name</span>
+                    <span>Amount of Time</span>
+                    <span>ECTS</span>
+                </div>
+                <div class="courseContent">
+                    <div id="plan" ng-repeat="semestre in cadeirasList track by $index">
+                        <div class="courseRow tableTab">
+                            <span ng-hide="$index%2!=0">Year {{Math.round(($index+1)/2)}} - Fall</span>
+                            <span ng-hide="$index%2==0">Year {{Math.round(($index+1)/2)}} - Spring</span>
+                        </div>
+                        <div class="courseRow" ng-repeat="cadeira in semestre">
+                            <span>{{cadeira.nome}}</span>
+                            <span>{{cadeira.horasensino}}</span>
+                            <span>{{cadeira.creditos}}</span>
+                        </div>
+                    </div>
+                    <div id="warning" ng-hide="cadeirasList.length!=0">
+                        <i class="icon-error"></i>
+                        <span>Please, select a program!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer2">
+            <button ng-click="createStudent(user)" type="submit">Confirm</button>
+            <button ng-click="goBack()">Cancel</button>
+            <span>{{result}}</span>
+        </div>
+        
+    </form>
+</div>
+<div id="menuDark">
+    <div id="sucess">
+        <div id="topbar"></div>
+        <div id="popupcontent">
+            <i class="icon-select"></i>
+            <span>Sucess!</span>
+            <p>The new program was sucessfully created!</p>
+        </div>
+    </div>
+</div>

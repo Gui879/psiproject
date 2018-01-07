@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+html,body{
+    height: 100%;
+    margin: 0;
+    font-size: 15px;
+}
+body{
+    font-family: 'Quicksand';
+    color: white;
+    background-image: url(/client/shared/images/novaims3.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#leftSide{
+    position: relative;
+    float: left;
+    height: 100%;
+    background: -webkit-linear-gradient(left top,rgba(190,214,47,0.3),rgba(130,145,31,0.8)); /*Safari 5.1-6*/
+    background: -moz-linear-gradient(left top,rgba(190,214,47,0.3),rgba(130,145,31,0.8)); /*Fx 3.6-15*/
+
+    width: 300px;
+    justify-content:center;
+    align-items:center;
+}
+
+
+#head img{
+    width: 80px;
+    display: block;
+}
+
+#leftSide p{
+    position: relative;
+    text-align: right;
+    font-size:800%;
+    padding-right: 20px;
+}
+#login{
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+#login span{
+    text-align: left;
+    width: 100%;
+    position: relative;
+    float: left;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 10px;
+}
+#login input{
+    width: 100%;
+    font-size: 15px;
+    padding: 8px;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
+    font-family: 'Quicksand';
+}
+button{
+    width: 40%;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    border: 0;
+    color: white;
+    background-color: transparent;
+    position: relative;
+    float: right;
+    text-align: right;
+    margin-top: 5px;
+    font-family: 'Quicksand';
+    
+}
+
+#links{
+    width: 230px;
+    position: absolute; 
+    bottom: 0;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+.link{
+    width: 100%;
+    margin: 10px;
+    font-weight: bold;
+}
+.link img{
+    width: 15px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.link span{
+    font-size: 15px;
+    line-height: 30px;
+}
+
+
+
+
+
